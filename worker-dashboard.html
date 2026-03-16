@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaarya | Worker Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-container { max-width: 1200px; margin: 40px auto; padding: 0 5%; display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+        
+        /* Smart Profile Card */
+        .profile-card { background: white; padding: 30px; border-radius: 20px; box-shadow: var(--shadow-soft); height: fit-content; text-align: center; }
+        .avatar { width: 80px; height: 80px; background: var(--brand-accent-gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 15px; font-weight: bold;}
+        .verification-badge { display: inline-block; background: #ECFDF5; color: var(--success-green); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-top: 10px; }
+        
+        /* Job Feed (Live Matching) */
+        .job-feed { display: flex; flex-direction: column; gap: 20px; }
+        .job-card { background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; transition: 0.3s; display: flex; flex-direction: column; gap: 10px;}
+        .job-card:hover { border-color: var(--brand-accent); box-shadow: var(--shadow-soft); transform: translateY(-3px); }
+        .job-header { display: flex; justify-content: space-between; align-items: flex-start; }
+        .job-title { font-family: 'Poppins', sans-serif; font-size: 1.3rem; color: var(--brand-navy); }
+        .job-wage { color: var(--success-green); font-weight: 700; font-size: 1.2rem; }
+        .company-name { color: var(--text-muted); font-weight: 500; margin-bottom: 10px;}
+        .job-details { display: flex; gap: 15px; font-size: 0.9rem; color: var(--text-muted); flex-wrap: wrap;}
+        .job-details span { background: var(--bg-light); padding: 5px 10px; border-radius: 8px; }
+        
+        @media (max-width: 768px) { .dashboard-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="glass-header">
+        <div class="logo">Kaarya<span class="dot">.</span> <span style="font-size: 1rem; color: var(--text-muted); font-weight: 500;">Worker</span></div>
+        <button class="btn-light" onclick="location.href='index.html'" style="color:var(--brand-dark); border-color:#ccc;">Log Out</button>
+    </header>
+
+    <div class="dashboard-container">
+        
+        <div class="profile-card">
+            <div class="avatar">W</div>
+            <h2 style="font-family: 'Poppins';">Your Profile</h2>
+            <div class="verification-badge"><i class="fa-solid fa-circle-check"></i> ID Verified</div>
+            <p style="margin-top: 15px; color: var(--text-muted);">Status: <span style="color: var(--brand-accent); font-weight: bold;">Available for Work</span></p>
+            <hr style="border: 0; height: 1px; background: #eee; margin: 20px 0;">
+            <p><i class="fa-solid fa-star" style="color: #FFD700;"></i> Kaarya Score: <strong>New</strong></p>
+        </div>
+
+        <div>
+            <h2 style="font-family: 'Poppins'; margin-bottom: 20px;">Live Job Matches</h2>
+            <div id="jobFeed" class="job-feed">
+                <p>Searching for nearby jobs...</p>
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch Live Jobs from the Database
+        async function fetchJobs() {
+            try {
+                const res = await fetch('/api/jobs');
+                const jobs = await res.json();
+                const container = document.getElementById('jobFeed');
+                container.innerHTML = '';
+
+                if(jobs.length === 0) {
+                    container.innerHTML = '<p style="color: #666;">No jobs posted in your area yet. Check back soon!</p>';
+                    return;
+                }
+
+                // Loop through the jobs and display them
+                jobs.forEach(job => {
+                    const company = job.employerId ? job.employerId.companyName : "Verified Employer";
+                    
+                    container.innerHTML += `
+                        <div class="job-card">
+                            <div class="job-header">
+                                <div>
+                                    <div class="job-title">${job.title}</div>
+                                    <div class="company-name"><i class="fa-solid fa-building"></i> ${company}</div>
+                                </div>
+                                <div class="job-wage">₹${job.dailyWage} / day</div>
+                            </div>
+                            
+                            <div class="job-details">
+                                <span><i class="fa-solid fa-screwdriver-wrench text-blue"></i> ${job.skillRequired}</span>
+                                <span><i class="fa-solid fa-location-dot text-orange"></i> ${job.location}</span>
+                                <span><i class="fa-solid fa-users text-green"></i> Need ${job.workersNeeded} workers</span>
+                            </div>
+
+                            <button class="btn-gradient" style="margin-top: 15px; width: fit-content;" onclick="applyForJob(this)">
+                                <i class="fa-solid fa-paper-plane"></i> Apply Directly
+                            </button>
+                        </div>
+                    `;
+                });
+            } catch (err) {
+                console.error("Error fetching jobs:", err);
+                document.getElementById('jobFeed').innerHTML = '<p style="color: red;">Failed to load jobs. Make sure the server is running.</p>';
+            }
+        }
+
+        // Simulate the Application Process
+        function applyForJob(buttonElement) {
+            buttonElement.innerHTML = '<i class="fa-solid fa-check"></i> Application Sent!';
+            buttonElement.style.background = 'var(--success-green)';
+            buttonElement.style.boxShadow = 'none';
+            buttonElement.disabled = true;
+            alert('Success! The employer has been notified directly. Zero middlemen involved.');
+        }
+
+        // Run when page loads
+        fetchJobs();
+    </script>
+</body>
+</html>

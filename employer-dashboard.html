@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaarya | Employer Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-container { max-width: 1200px; margin: 40px auto; padding: 0 5%; display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+        .post-job-card { background: white; padding: 30px; border-radius: 20px; box-shadow: var(--shadow-soft); height: fit-content; }
+        .worker-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .worker-card { background: white; padding: 20px; border-radius: 16px; border: 1px solid #eee; transition: 0.3s; }
+        .worker-card:hover { border-color: var(--brand-accent); transform: translateY(-3px); }
+        .badge { background: #EEF2FF; color: #4F46E5; padding: 5px 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 600;}
+        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; margin-top: 5px;}
+        @media (max-width: 768px) { .dashboard-container { grid-template-columns: 1fr; } .worker-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="glass-header">
+        <div class="logo">Kaarya<span class="dot">.</span> Dashboard</div>
+        <button class="btn-light" onclick="location.href='index.html'" style="color:var(--brand-dark); border-color:#ccc;">Log Out</button>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="post-job-card">
+            <h2 style="font-family: 'Poppins'; margin-bottom: 20px;">Post a New Job</h2>
+            <form id="jobForm">
+                <label>Job Title</label>
+                <input type="text" id="jobTitle" placeholder="e.g. Need 10 Masons" required>
+                
+                <label>Skill Required</label>
+                <select id="jobSkill" required>
+                    <option value="Construction helper">Construction Helper</option>
+                    <option value="Mason">Mason</option>
+                    <option value="Painter">Painter</option>
+                    <option value="Plumber">Plumber</option>
+                    <option value="Electrician">Electrician</option>
+                </select>
+
+                <label>Daily Wage (₹)</label>
+                <input type="number" id="jobWage" placeholder="e.g. 700" required>
+
+                <label>Number of Workers Needed</label>
+                <input type="number" id="jobWorkers" placeholder="e.g. 15" required>
+
+                <label>Location</label>
+                <input type="text" id="jobLocation" placeholder="e.g. Site A, Delhi" required>
+
+                <button type="submit" class="btn-gradient" style="width: 100%;">Post Job to Feed</button>
+            </form>
+        </div>
+
+        <div>
+            <h2 style="font-family: 'Poppins'; margin-bottom: 20px;">Available Workers Near You</h2>
+            <div id="workersList" class="worker-grid">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Load Workers from the Database
+        async function fetchWorkers() {
+            try {
+                const res = await fetch('/api/workers');
+                const workers = await res.json();
+                const container = document.getElementById('workersList');
+                container.innerHTML = '';
+
+                if(workers.length === 0) {
+                    container.innerHTML = '<p>No workers available right now.</p>';
+                    return;
+                }
+
+                workers.forEach(w => {
+                    container.innerHTML += `
+                        <div class="worker-card">
+                            <h3 style="margin-bottom:5px;">${w.name}</h3>
+                            <span class="badge">${w.skills[0]}</span>
+                            <p style="margin-top:15px; color:#666;"><i class="fa-solid fa-indian-rupee-sign"></i> ₹${w.expectedDailyWage} / day</p>
+                            <p style="color:#666;"><i class="fa-solid fa-location-dot"></i> ${w.location}</p>
+                            <p style="color:#666;"><i class="fa-solid fa-briefcase"></i> Exp: ${w.experienceYears} yrs</p>
+                        </div>
+                    `;
+                });
+            } catch (err) {
+                console.error("Error fetching workers");
+            }
+        }
+
+        // 2. Handle Job Posting
+        document.getElementById('jobForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get the fake "logged in" employer ID
+            const empId = localStorage.getItem('kaarya_employer_id');
+            if(!empId) {
+                alert("Session expired. Please register/login as an employer first.");
+                return;
+            }
+
+            const jobData = {
+                employerId: empId,
+                title: document.getElementById('jobTitle').value,
+                skillRequired: document.getElementById('jobSkill').value,
+                dailyWage: document.getElementById('jobWage').value,
+                workersNeeded: document.getElementById('jobWorkers').value,
+                location: document.getElementById('jobLocation').value,
+                jobDurationDays: 1 // Default for now
+            };
+
+            try {
+                const response = await fetch('/api/post-job', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(jobData)
+                });
+
+                if (response.ok) {
+                    alert('Job Posted Successfully! Workers can now see it.');
+                    document.getElementById('jobForm').reset();
+                }
+            } catch (err) {
+                alert('Server connection failed.');
+            }
+        });
+
+        // Run when page loads
+        fetchWorkers();
+    </script>
+</body>
+</html>

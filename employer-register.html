@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaarya | Employer Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-container { max-width: 500px; margin: 60px auto; padding: 40px; background: white; border-radius: 20px; box-shadow: var(--shadow-soft); }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--brand-navy); font-family: 'Poppins', sans-serif;}
+        input { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 12px; font-size: 1rem; transition: 0.3s;}
+        input:focus { outline: none; border-color: var(--brand-accent); box-shadow: 0 0 0 3px rgba(255,107,0,0.1); }
+    </style>
+</head>
+<body>
+    <header class="glass-header">
+        <div class="logo" onclick="location.href='index.html'" style="cursor: pointer;">Kaarya<span class="dot">.</span></div>
+    </header>
+
+    <div class="form-container">
+        <h2 style="font-family: 'Poppins'; color: var(--brand-dark); margin-bottom: 10px;">Hire Top Talent</h2>
+        <p style="color: var(--text-muted); margin-bottom: 30px;">Create your employer account in seconds.</p>
+
+        <form id="employerForm">
+            <div class="input-group">
+                <label>Company / Contractor Name</label>
+                <input type="text" id="companyName" placeholder="e.g. L&T Construction" required>
+            </div>
+            <div class="input-group">
+                <label>Your Full Name</label>
+                <input type="text" id="contactName" placeholder="e.g. Amit Sharma" required>
+            </div>
+            <div class="input-group">
+                <label>Phone Number</label>
+                <input type="tel" id="phone" placeholder="10-digit mobile number" required>
+            </div>
+            <div class="input-group">
+                <label>Headquarters / Main City</label>
+                <input type="text" id="headquarters" placeholder="e.g. Mumbai" required>
+            </div>
+
+            <button type="submit" class="btn-gradient" style="width: 100%; margin-top: 10px;">Create Account</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('employerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const employerData = {
+                companyName: document.getElementById('companyName').value,
+                contactName: document.getElementById('contactName').value,
+                phone: document.getElementById('phone').value,
+                headquarters: document.getElementById('headquarters').value
+            };
+
+            try {
+                const response = await fetch('/api/register-employer', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(employerData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Registration Successful! Redirecting to Dashboard...');
+                    // Temporarily save employer ID to local storage to simulate being "logged in"
+                    localStorage.setItem('kaarya_employer_id', result.employerId);
+                    window.location.href = 'employer-dashboard.html';
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (err) {
+                alert('Server connection failed.');
+            }
+        });
+    </script>
+</body>
+</html>

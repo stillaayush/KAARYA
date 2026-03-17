@@ -10,7 +10,9 @@
 </head>
 <body>
     <header class="glass-header">
-        <div class="logo"><i class="fa-solid fa-handshake"></i> Kaarya<span class="dot">.</span></div>
+        <div class="logo" onclick="location.href='index.html'" style="cursor: pointer;">
+            <i class="fa-solid fa-handshake"></i> Kaarya<span class="dot">.</span>
+        </div>
         <div class="lang-selector">
             <i class="fa-solid fa-globe"></i>
             <select id="languageToggle" onchange="changeLanguage()">
@@ -44,13 +46,17 @@
             </div>
         </div>
         <div class="hero-visual">
-            <div class="floating-card card-1">
-                <i class="fa-solid fa-indian-rupee-sign"></i> Transparent Wages
-            </div>
-            <div class="floating-card card-2">
-                <i class="fa-solid fa-bolt"></i> Instant Bulk Hiring
-            </div>
+            <div class="floating-card card-1"><i class="fa-solid fa-indian-rupee-sign"></i> Transparent Wages</div>
+            <div class="floating-card card-2"><i class="fa-solid fa-bolt"></i> Instant Bulk Hiring</div>
             <img src="https://cdn-icons-png.flaticon.com/512/3281/3281289.png" alt="Worker Icon" class="hero-icon">
+        </div>
+    </section>
+
+    <section class="ethics-banner">
+        <div class="ethics-content">
+            <div class="ethics-icon-box"><i class="fa-solid fa-ban"></i></div>
+            <h2 id="ethics-title">No Child Labour</h2>
+            <p id="ethics-sub">Kaarya strictly prohibits child labour. We are committed to an ethical, 18+ workforce for a better future.</p>
         </div>
     </section>
 
@@ -71,63 +77,97 @@
         </div>
     </section>
 
-    <section class="how-it-works">
-        <div class="section-heading">
-            <h2 id="how-title">Seamless Hiring Engine</h2>
-            <p>Built for speed and reliability</p>
-        </div>
-        <div class="steps-container">
-            <div class="elegant-card">
-                <div class="icon-wrapper bg-blue-light"><i class="fa-solid fa-id-card text-blue"></i></div>
-                <h3 id="step-1">1. Smart Profile</h3>
-                <p>Workers register skills & verify ID in 2 minutes.</p>
+    <div id="ai-chat-wrapper">
+        <div id="chat-window" class="hidden">
+            <div class="chat-header">
+                <span><i class="fa-solid fa-robot"></i> Kaarya AI Assistant</span>
+                <button onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="elegant-card">
-                <div class="icon-wrapper bg-orange-light"><i class="fa-solid fa-satellite-dish text-orange"></i></div>
-                <h3 id="step-2">2. Live Matching</h3>
-                <p>Employers post jobs and match with nearby talent.</p>
+            <div id="chat-body">
+                <div class="ai-msg">Namaste! I am your Kaarya AI Assistant. How can I help you today?</div>
             </div>
-            <div class="elegant-card">
-                <div class="icon-wrapper bg-green-light"><i class="fa-solid fa-circle-check text-green"></i></div>
-                <h3 id="step-3">3. Direct Hire</h3>
-                <p>Communicate & pay directly. No hidden fees.</p>
+            <div class="chat-footer">
+                <input type="text" id="chat-input" placeholder="Ask about jobs, wages...">
+                <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
         </div>
-    </section>
+        <button id="chat-toggle-btn" onclick="toggleChat()">
+            <i class="fa-solid fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3 class="logo" style="color:white">Kaarya<span class="dot">.</span></h3>
+            <p id="footer-copy">© 2026 Kaarya App - Empowering India's Workforce.</p>
+        </div>
+    </footer>
 
     <script>
-        // Dictionary for all language translations
+        // --- LANGUAGE TRANSLATION DICTIONARY ---
         const translations = {
-            en: { heroTitle: "Hire the Best.\nWithout Middlemen.", heroSub: "Kaarya connects skilled daily-wage professionals directly with top employers. Transparent pay, instant hiring, zero commission.", btnWorker: "Join as Worker", btnEmployer: "Hire Now", howTitle: "Seamless Hiring Engine", step1: "1. Smart Profile", step2: "2. Live Matching", step3: "3. Direct Hire", stat1: "Active Workers", stat2: "Trusted Companies", stat3: "Commission" },
-            hi: { heroTitle: "सर्वश्रेष्ठ को काम पर रखें।\nबिचौलियों के बिना।", heroSub: "कार्य कुशल दैनिक वेतन भोगी पेशेवरों को सीधे शीर्ष नियोक्ताओं से जोड़ता है। पारदर्शी वेतन, तत्काल भर्ती, शून्य कमीशन।", btnWorker: "श्रमिक के रूप में जुड़ें", btnEmployer: "अभी काम पर रखें", howTitle: "सहज भर्ती इंजन", step1: "1. स्मार्ट प्रोफाइल", step2: "2. लाइव मिलान", step3: "3. सीधी भर्ती", stat1: "सक्रिय श्रमिक", stat2: "भरोसेमंद कंपनियाँ", stat3: "कमीशन" },
-            mai: { heroTitle: "सबसँ नीक कें काज पर राखू।\nबिचौलियाक बिना।", heroSub: "कार्या कुशल दैनिक वेतनभोगी पेशेवरसभ कें सोझे शीर्ष नियोक्तासभ सँ जोड़ैत अछि। पारदर्शी वेतन, तत्काल काज, शून्य कमीशन।", btnWorker: "श्रमिकक रूपमे जुड़ू", btnEmployer: "आब काज पर राखू", howTitle: "सहज काजक इंजन", step1: "1. स्मार्ट प्रोफाइल", step2: "2. लाइव मिलान", step3: "3. सोझे भर्ती", stat1: "सक्रिय श्रमिक", stat2: "भरोसेमंद कंपनीसभ", stat3: "कमीशन" },
-            ta: { heroTitle: "சிறந்தவர்களை வேலைக்கு அமர்த்துங்கள்.\nஇடைத்தரகர்கள் இன்றி.", heroSub: "கார்யா திறமையான தினக்கூலி தொழிலாளர்களை நேரடியாக சிறந்த முதலாளிகளுடன் இணைக்கிறது. வெளிப்படையான ஊதியம், உடனடி வேலைவாய்ப்பு, கமிஷன் இல்லை.", btnWorker: "தொழிலாளியாக சேரவும்", btnEmployer: "இப்போதே ஆட்களை எடுக்க", howTitle: "தடையற்ற வேலைவாய்ப்பு இயந்திரம்", step1: "1. ஸ்மார்ட் புரொஃபைல்", step2: "2. நேரடி பொருத்தம்", step3: "3. நேரடி வேலைவாய்ப்பு", stat1: "செயலில் உள்ள தொழிலாளர்கள்", stat2: "நம்பகமான நிறுவனங்கள்", stat3: "கமிஷன்" },
-            te: { heroTitle: "ఉత్తములను నియమించుకోండి.\nమధ్యవర్తులు లేకుండా.", heroSub: "కార్య నైపుణ్యం గల దినసరి వేతన నిపుణులను నేరుగా టాప్ యజమానులతో కలుపుతుంది. పారదర్శక చెల్లింపు, తక్షణ నియామకం, సున్నా కమీషన్.", btnWorker: "కార్మికుడిగా చేరండి", btnEmployer: "ఇప్పుడే నియమించుకోండి", howTitle: "అతుకులు లేని నియామక ఇంజిన్", step1: "1. స్మార్ట్ ప్రొఫైల్", step2: "2. లైవ్ మ్యాచింగ్", step3: "3. డైరెక్ట్ హైర్", stat1: "క్రియాశీల కార్మికులు", stat2: "విశ్వసనీయ కంపెనీలు", stat3: "కమీషన్" },
-            bn: { heroTitle: "সেরাদের নিয়োগ দিন।\nমধ্যস্থতাকারী ছাড়া।", heroSub: "কায়া দক্ষ দৈনিক মজুরি পেশাদারদের সরাসরি শীর্ষ নিয়োগকর্তাদের সাথে সংযুক্ত করে। স্বচ্ছ বেতন, তাত্ক্ষণিক নিয়োগ, শূন্য কমিশন।", btnWorker: "কর্মী হিসাবে যোগ দিন", btnEmployer: "এখনই নিয়োগ দিন", howTitle: "বিরামহীন নিয়োগ ইঞ্জিন", step1: "1. স্মার্ট প্রোফাইল", step2: "2. লাইভ ম্যাচিং", step3: "3. সরাসরি নিয়োগ", stat1: "সক্রিয় কর্মী", stat2: "বিশ্বস্ত কোম্পানি", stat3: "কমিশন" },
-            ne: { heroTitle: "उत्कृष्टलाई काममा राख्नुहोस्।\nबिचौलिया बिना।", heroSub: "कार्यले दक्ष दैनिक ज्यालादारी पेशेवरहरूलाई सिधै शीर्ष रोजगारदाताहरूसँग जोड्दछ। पारदर्शी ज्याला, तत्काल भर्ना, शून्य कमिसन।", btnWorker: "कामदारको रूपमा सामेल हुनुहोस्", btnEmployer: "अहिले काममा राख्नुहोस्", howTitle: "सहज भर्ना इन्जिन", step1: "1. स्मार्ट प्रोफाइल", step2: "2. प्रत्यक्ष मिलान", step3: "3. सीधा भर्ना", stat1: "सक्रिय कामदारहरू", stat2: "विश्वसनीय कम्पनीहरू", stat3: "कमिसन" },
-            es: { heroTitle: "Contrata a los mejores.\nSin intermediarios.", heroSub: "Kaarya conecta a profesionales capacitados directamente con los mejores empleadores. Pago transparente, contratación instantánea, cero comisiones.", btnWorker: "Únete como trabajador", btnEmployer: "Contratar ahora", howTitle: "Motor de contratación", step1: "1. Perfil Inteligente", step2: "2. Emparejamiento en vivo", step3: "3. Contratación Directa", stat1: "Trabajadores activos", stat2: "Empresas confiables", stat3: "Comisión" },
-            fr: { heroTitle: "Embauchez les meilleurs.\nSans intermédiaires.", heroSub: "Kaarya met en relation les travailleurs qualifiés directement avec les meilleurs employeurs. Rémunération transparente, embauche instantanée, zéro commission.", btnWorker: "Rejoindre comme travailleur", btnEmployer: "Embaucher maintenant", howTitle: "Moteur d'embauche fluide", step1: "1. Profil intelligent", step2: "2. Mise en relation en direct", step3: "3. Embauche directe", stat1: "Travailleurs actifs", stat2: "Entreprises de confiance", stat3: "Commission" },
-            de: { heroTitle: "Stelle die Besten ein.\nOhne Zwischenhändler.", heroSub: "Kaarya verbindet qualifizierte Tagelöhner direkt mit Top-Arbeitgebern. Transparente Bezahlung, sofortige Einstellung, null Provision.", btnWorker: "Als Arbeiter beitreten", btnEmployer: "Jetzt einstellen", howTitle: "Reibungslose Einstellungsmaschine", step1: "1. Smartes Profil", step2: "2. Live-Matching", step3: "3. Direkteinstellung", stat1: "Aktive Arbeiter", stat2: "Vertrauenswürdige Unternehmen", stat3: "Provision" },
-            zh: { heroTitle: "聘请最优秀的人才。\n没有中间商。", heroSub: "Kaarya将熟练的日结工资专业人员直接与顶尖雇主联系起来。薪酬透明，即时招聘，零佣金。", btnWorker: "作为工人加入", btnEmployer: "立即招聘", howTitle: "无缝招聘引擎", step1: "1. 智能档案", step2: "2. 实时匹配", step3: "3. 直接招聘", stat1: "活跃工人", stat2: "值得信赖的公司", stat3: "佣金" }
+            en: { heroTitle: "Hire the Best.\nWithout Middlemen.", heroSub: "Kaarya connects skilled daily-wage professionals directly with top employers. Transparent pay, instant hiring, zero commission.", btnWorker: "Join as Worker", btnEmployer: "Hire Now", stat1: "Active Workers", stat2: "Trusted Companies", stat3: "Commission", ethicsTitle: "No Child Labour", ethicsSub: "Kaarya strictly prohibits child labour. We are committed to an ethical, 18+ workforce for a better future." },
+            hi: { heroTitle: "सर्वश्रेष्ठ को काम पर रखें।\nबिचौलियों के बिना।", heroSub: "कार्य कुशल दैनिक वेतन भोगी पेशेवरों को सीधे शीर्ष नियोक्ताओं से जोड़ता है। पारदर्शी वेतन, तत्काल भर्ती, शून्य कमीशन।", btnWorker: "श्रमिक के रूप में जुड़ें", btnEmployer: "अभी काम पर रखें", stat1: "सक्रिय श्रमिक", stat2: "भरोसेमंद कंपनियाँ", stat3: "कमीशन", ethicsTitle: "बाल श्रम निषेध", ethicsSub: "कार्य बाल श्रम को सख्ती से रोकता है। हम एक बेहतर भविष्य के लिए 18+ कार्यबल के लिए प्रतिबद्ध हैं।" },
+            mai: { heroTitle: "सबसँ नीक कें काज पर राखू।\nबिचौलियाक बिना।", heroSub: "कार्या कुशल दैनिक वेतनभोगी पेशेवरसभ कें सोझे शीर्ष नियोक्तासभ सँ जोड़ैत अछि। पारदर्शी वेतन, तत्काल काज, शून्य कमीशन।", btnWorker: "श्रमिकक रूपमे जुड़ू", btnEmployer: "आब काज पर राखू", stat1: "सक्रिय श्रमिक", stat2: "भरोसेमंद कंपनीसभ", stat3: "कमीशन", ethicsTitle: "बाल श्रम निषेध", ethicsSub: "कार्य बाल श्रम केँ कड़ाई सँ रोकैत अछि। हम भविष्य लेल १८+ कार्यबलक लेल प्रतिबद्ध छी।" }
+            // Note: Add other language strings similarly to expand the dictionary
         };
 
         function changeLanguage() {
             const lang = document.getElementById("languageToggle").value;
             const t = translations[lang] || translations['en']; 
-            
-            // Using innerHTML here so the <br> tag in the translation works
             document.getElementById("hero-title").innerHTML = t.heroTitle.replace('\n', '<br><span class="highlight">') + '</span>';
             document.getElementById("hero-sub").innerText = t.heroSub;
             document.getElementById("btn-worker").innerText = t.btnWorker;
             document.getElementById("btn-employer").innerText = t.btnEmployer;
-            document.getElementById("how-title").innerText = t.howTitle;
-            document.getElementById("step-1").innerText = t.step1;
-            document.getElementById("step-2").innerText = t.step2;
-            document.getElementById("step-3").innerText = t.step3;
             document.getElementById("stat-1").innerText = t.stat1;
             document.getElementById("stat-2").innerText = t.stat2;
             document.getElementById("stat-3").innerText = t.stat3;
+            document.getElementById("ethics-title").innerText = t.ethicsTitle;
+            document.getElementById("ethics-sub").innerText = t.ethicsSub;
         }
+
+        // --- SMART AI CHAT LOGIC ---
+        function toggleChat() {
+            document.getElementById('chat-window').classList.toggle('hidden');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const body = document.getElementById('chat-body');
+            const userText = input.value.trim();
+
+            if (!userText) return;
+
+            body.innerHTML += `<div class="user-msg">${userText}</div>`;
+            const query = userText.toLowerCase();
+            input.value = '';
+
+            let reply = "I'm still learning! Ask me about 'jobs', 'wages', 'attendance', or 'child labour'.";
+
+            if (query.includes('job') || query.includes('work') || query.includes('find')) {
+                reply = "Workers can register and view a live Job Feed. Matches are based on your skills and location.";
+            } else if (query.includes('hire') || query.includes('post') || query.includes('employer')) {
+                reply = "Employers can post jobs and hire multiple workers instantly through the Employer Dashboard.";
+            } else if (query.includes('pay') || query.includes('wage') || query.includes('money') || query.includes('commission')) {
+                reply = "Wages are transparent. Employers pay workers directly via UPI or Cash. Kaarya takes 0% commission.";
+            } else if (query.includes('child') || query.includes('age') || query.includes('minor') || query.includes('18')) {
+                reply = "Kaarya is a 'No Child Labour' platform. All users must be 18+ and provide valid ID verification.";
+            } else if (query.includes('attendance') || query.includes('check')) {
+                reply = "Our 'Digital Attendance' feature allows workers to check-in at the job site to verify work hours.";
+            } else if (query.includes('hi') || query.includes('hello') || query.includes('namaste')) {
+                reply = "Namaste! I am the Kaarya AI Assistant. How can I help you today?";
+            }
+
+            setTimeout(() => {
+                body.innerHTML += `<div class="ai-msg">${reply}</div>`;
+                body.scrollTop = body.scrollHeight;
+            }, 600);
+        }
+
+        // Send on Enter Key
+        document.getElementById('chat-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') sendMessage();
+        });
     </script>
 </body>
 </html>

@@ -8,54 +8,104 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        .dashboard-container { max-width: 1200px; margin: 40px auto; padding: 0 5%; display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+        .dashboard-container { max-width: 1200px; margin: 30px auto; padding: 0 5%; display: grid; grid-template-columns: 1fr 2.5fr; gap: 30px; }
         
-        /* Smart Profile Card */
-        .profile-card { background: white; padding: 30px; border-radius: 20px; box-shadow: var(--shadow-soft); height: fit-content; text-align: center; }
-        .avatar { width: 80px; height: 80px; background: var(--brand-accent-gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 15px; font-weight: bold;}
-        .verification-badge { display: inline-block; background: #ECFDF5; color: var(--success-green); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-top: 10px; }
+        /* Profile Sidebar */
+        .profile-card { background: white; padding: 30px; border-radius: 24px; box-shadow: var(--shadow-soft); text-align: center; height: fit-content; position: sticky; top: 100px; }
+        .avatar-wrapper { position: relative; width: 100px; height: 100px; margin: 0 auto 15px; }
+        .avatar { width: 100%; height: 100%; background: var(--brand-accent-gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 800; border: 4px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .verify-badge { position: absolute; bottom: 0; right: 0; background: #00B67A; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid white; font-size: 0.8rem; }
         
-        /* Job Feed (Live Matching) */
-        .job-feed { display: flex; flex-direction: column; gap: 20px; }
-        .job-card { background: white; padding: 25px; border-radius: 16px; border: 1px solid #eee; transition: 0.3s; display: flex; flex-direction: column; gap: 10px;}
-        .job-card:hover { border-color: var(--brand-accent); box-shadow: var(--shadow-soft); transform: translateY(-3px); }
-        .job-header { display: flex; justify-content: space-between; align-items: flex-start; }
-        .job-title { font-family: 'Poppins', sans-serif; font-size: 1.3rem; color: var(--brand-navy); }
-        .job-wage { color: var(--success-green); font-weight: 700; font-size: 1.2rem; }
-        .company-name { color: var(--text-muted); font-weight: 500; margin-bottom: 10px;}
-        .job-details { display: flex; gap: 15px; font-size: 0.9rem; color: var(--text-muted); flex-wrap: wrap;}
-        .job-details span { background: var(--bg-light); padding: 5px 10px; border-radius: 8px; }
-        
-        @media (max-width: 768px) { .dashboard-container { grid-template-columns: 1fr; } }
+        /* Availability Toggle */
+        .status-toggle { margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #00B67A; }
+        input:checked + .slider:before { transform: translateX(24px); }
+
+        /* Job Feed & Filters */
+        .feed-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 10px; }
+        .filter-tag { padding: 8px 18px; background: white; border: 1px solid #ddd; border-radius: 50px; cursor: pointer; font-size: 0.9rem; font-weight: 500; white-space: nowrap; transition: 0.3s; }
+        .filter-tag.active { background: var(--brand-dark); color: white; border-color: var(--brand-dark); }
+
+        .job-card { background: white; padding: 25px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.05); margin-bottom: 20px; transition: 0.3s; }
+        .job-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); border-color: var(--brand-accent); }
+        .job-meta { display: flex; gap: 15px; margin: 15px 0; color: var(--text-muted); font-size: 0.9rem; }
+        .job-meta span { display: flex; align-items: center; gap: 6px; }
+
+        @media (max-width: 768px) { .dashboard-container { grid-template-columns: 1fr; } .profile-card { position: static; } }
     </style>
 </head>
 <body>
     <header class="glass-header">
-        <div class="logo">Kaarya<span class="dot">.</span> <span style="font-size: 1rem; color: var(--text-muted); font-weight: 500;">Worker</span></div>
-        <button class="btn-light" onclick="location.href='index.html'" style="color:var(--brand-dark); border-color:#ccc;">Log Out</button>
+        <div class="logo" onclick="location.href='index.html'" style="cursor: pointer;">Kaarya<span class="dot">.</span></div>
+        <div style="display: flex; gap: 15px;">
+            <button class="btn-light" style="color: #333; padding: 10px 20px;">Support</button>
+            <button class="btn-gradient" style="padding: 10px 20px;" onclick="location.href='index.html'">Logout</button>
+        </div>
     </header>
 
     <div class="dashboard-container">
-        
-        <div class="profile-card">
-            <div class="avatar">W</div>
-            <h2 style="font-family: 'Poppins';">Your Profile</h2>
-            <div class="verification-badge"><i class="fa-solid fa-circle-check"></i> ID Verified</div>
-            <p style="margin-top: 15px; color: var(--text-muted);">Status: <span style="color: var(--brand-accent); font-weight: bold;">Available for Work</span></p>
-            <hr style="border: 0; height: 1px; background: #eee; margin: 20px 0;">
-            <p><i class="fa-solid fa-star" style="color: #FFD700;"></i> Kaarya Score: <strong>New</strong></p>
-        </div>
+        <aside class="profile-card">
+            <div class="avatar-wrapper">
+                <div class="avatar">S</div>
+                <div class="verify-badge" title="Aadhaar Verified"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <h2 id="workerName" style="font-family: 'Poppins';">Suresh Kumar</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Plumbing Specialist</p>
+            
+            <div class="status-toggle">
+                <span style="font-weight: 600; font-size: 0.9rem;">Duty Status</span>
+                <label class="switch">
+                    <input type="checkbox" checked onchange="updateStatus(this)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <p id="statusLabel" style="color: #00B67A; font-weight: 700; font-size: 0.8rem;">● ONLINE & READY</p>
+            
+            <div style="text-align: left; margin-top: 25px; font-size: 0.9rem; border-top: 1px solid #eee; padding-top: 20px;">
+                <p style="margin-bottom: 10px;"><i class="fa-solid fa-star" style="color: #FFD700;"></i> <strong>4.8</strong> (12 Jobs Done)</p>
+                <p><i class="fa-solid fa-location-dot" style="color: var(--brand-accent);"></i> Okhla, New Delhi</p>
+            </div>
+        </aside>
 
-        <div>
-            <h2 style="font-family: 'Poppins'; margin-bottom: 20px;">Live Job Matches</h2>
-            <div id="jobFeed" class="job-feed">
-                <p>Searching for nearby jobs...</p>
-                </div>
-        </div>
+        <main>
+            <div class="feed-header">
+                <h2 style="font-family: 'Poppins';">Recommended Jobs</h2>
+                <span style="color: var(--brand-accent); font-weight: 600;"><i class="fa-solid fa-bolt"></i> Live Feed</span>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-tag active">All Jobs</div>
+                <div class="filter-tag">High Pay (₹700+)</div>
+                <div class="filter-tag">Near Me</div>
+                <div class="filter-tag">Construction</div>
+                <div class="filter-tag">Plumbing</div>
+            </div>
+
+            <div id="jobFeed">
+                <p style="color: var(--text-muted); text-align: center; padding: 50px;">Finding matches based on your skills...</p>
+            </div>
+        </main>
     </div>
 
     <script>
-        // Fetch Live Jobs from the Database
+        // Toggle Duty Status Logic
+        function updateStatus(checkbox) {
+            const label = document.getElementById('statusLabel');
+            if(checkbox.checked) {
+                label.innerText = "● ONLINE & READY";
+                label.style.color = "#00B67A";
+            } else {
+                label.innerText = "○ OFFLINE (NO INVITES)";
+                label.style.color = "#999";
+            }
+        }
+
+        // Fetch Live Jobs from Database
         async function fetchJobs() {
             try {
                 const res = await fetch('/api/jobs');
@@ -64,52 +114,50 @@
                 container.innerHTML = '';
 
                 if(jobs.length === 0) {
-                    container.innerHTML = '<p style="color: #666;">No jobs posted in your area yet. Check back soon!</p>';
+                    container.innerHTML = '<div style="text-align:center; padding:50px;">No open jobs found. Check back later!</div>';
                     return;
                 }
 
-                // Loop through the jobs and display them
                 jobs.forEach(job => {
-                    const company = job.employerId ? job.employerId.companyName : "Verified Employer";
-                    
                     container.innerHTML += `
                         <div class="job-card">
-                            <div class="job-header">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                                 <div>
-                                    <div class="job-title">${job.title}</div>
-                                    <div class="company-name"><i class="fa-solid fa-building"></i> ${company}</div>
+                                    <h3 style="font-family: 'Poppins'; margin-bottom: 5px;">${job.title}</h3>
+                                    <p style="color: var(--text-muted); font-weight: 500;">${job.employerId?.companyName || 'Verified Employer'}</p>
                                 </div>
-                                <div class="job-wage">₹${job.dailyWage} / day</div>
+                                <div style="text-align: right;">
+                                    <div style="color: #00B67A; font-weight: 800; font-size: 1.3rem;">₹${job.dailyWage}</div>
+                                    <p style="font-size: 0.8rem; color: #999;">per day</p>
+                                </div>
                             </div>
                             
-                            <div class="job-details">
-                                <span><i class="fa-solid fa-screwdriver-wrench text-blue"></i> ${job.skillRequired}</span>
-                                <span><i class="fa-solid fa-location-dot text-orange"></i> ${job.location}</span>
-                                <span><i class="fa-solid fa-users text-green"></i> Need ${job.workersNeeded} workers</span>
+                            <div class="job-meta">
+                                <span><i class="fa-solid fa-briefcase"></i> ${job.skillRequired}</span>
+                                <span><i class="fa-solid fa-location-dot"></i> ${job.location}</span>
+                                <span><i class="fa-solid fa-clock"></i> Posted Today</span>
                             </div>
 
-                            <button class="btn-gradient" style="margin-top: 15px; width: fit-content;" onclick="applyForJob(this)">
-                                <i class="fa-solid fa-paper-plane"></i> Apply Directly
-                            </button>
+                            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                                <button class="btn-gradient" style="padding: 12px 25px;" onclick="apply(this)">Apply Now</button>
+                                <button class="btn-light" style="color: #333; border-color: #ddd; padding: 12px 25px;">Details</button>
+                            </div>
                         </div>
                     `;
                 });
             } catch (err) {
-                console.error("Error fetching jobs:", err);
-                document.getElementById('jobFeed').innerHTML = '<p style="color: red;">Failed to load jobs. Make sure the server is running.</p>';
+                console.error("Feed Error:", err);
             }
         }
 
-        // Simulate the Application Process
-        function applyForJob(buttonElement) {
-            buttonElement.innerHTML = '<i class="fa-solid fa-check"></i> Application Sent!';
-            buttonElement.style.background = 'var(--success-green)';
-            buttonElement.style.boxShadow = 'none';
-            buttonElement.disabled = true;
-            alert('Success! The employer has been notified directly. Zero middlemen involved.');
+        function apply(btn) {
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Application Sent';
+            btn.style.background = "#00B67A";
+            btn.disabled = true;
+            alert("Application successful! The employer will call you directly on your mobile.");
         }
 
-        // Run when page loads
+        // Run on load
         fetchJobs();
     </script>
 </body>

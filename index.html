@@ -3,171 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaarya | Premium Labor Marketplace</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <title>Kaarya | 3D Ethical Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header class="glass-header">
-        <div class="logo" onclick="location.href='index.html'" style="cursor: pointer;">
-            <i class="fa-solid fa-handshake"></i> Kaarya<span class="dot">.</span>
+<body class="light-theme">
+
+    <div class="legal-banner">
+        <p>
+            <i class="fa-solid fa-scale-balanced"></i> <strong>STOP CHILD LABOUR:</strong> It is a Crime (Act 1986). 
+            <span class="report-now">REPORT: 
+                <a href="tel:1098"><i class="fa-solid fa-phone"></i> 1098</a> | 
+                <a href="tel:100"><i class="fa-solid fa-shield-halved"></i> 100 (Police)</a>
+            </span>
+        </p>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="location.href='index.html'">
+                <i class="fa-solid fa-handshake-angle"></i> Kaarya<span>.</span>
+            </div>
+            <div class="nav-right">
+                <button id="theme-toggle" onclick="toggleTheme()" title="Switch Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <div class="lang-pill">
+                    <i class="fa-solid fa-globe"></i>
+                    <select id="languageToggle" onchange="changeLanguage()">
+                        <option value="en">English</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="mai">मैथिली (Maithili)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="te">తెలుగు (Telugu)</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="ne">नेपाली (Nepali)</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+                <button class="btn-outline-3d" onclick="location.href='employer-register.html'">Post Job</button>
+            </div>
         </div>
-        <div class="lang-selector">
-            <i class="fa-solid fa-globe"></i>
-            <select id="languageToggle" onchange="changeLanguage()">
-                <option value="en">English</option>
-                <option value="hi">हिन्दी (Hindi)</option>
-                <option value="mai">मैथिली (Maithili)</option>
-                <option value="ta">தமிழ் (Tamil)</option>
-                <option value="te">తెలుగు (Telugu)</option>
-                <option value="bn">বাংলা (Bengali)</option>
-                <option value="ne">नेपाली (Nepali)</option>
-                <option value="es">Español (Spanish)</option>
-                <option value="fr">Français (French)</option>
-                <option value="de">Deutsch (German)</option>
-                <option value="zh">中文 (Chinese)</option>
-            </select>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <div class="badge-3d">100% LEGAL & VERIFIED</div>
+                <h1 id="hero-title">Hire the Best.<br><span class="text-gradient">Without Middlemen.</span></h1>
+                <p id="hero-sub">Direct access to skilled professionals. No hidden fees, zero commission, and strictly ethical hiring.</p>
+                <div class="hero-cta">
+                    <button class="btn-3d-main" onclick="location.href='worker-register.html'">
+                        <span id="btn-worker">Find Work</span> <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <button class="btn-3d-sub" onclick="location.href='employer-register.html'">
+                        <span id="btn-employer">Hire Talent</span>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image-3d">
+                <div class="floating-card-3d">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div><strong>Verified 18+</strong><span>Legal Workforce</span></div>
+                </div>
+                <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Worker">
+            </div>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="trust-badge"><i class="fa-solid fa-shield-check"></i> 100% Verified Workforce</div>
-            <h1 id="hero-title">Hire the Best.<br><span class="highlight">Without Middlemen.</span></h1>
-            <p id="hero-sub">Kaarya connects skilled daily-wage professionals directly with top employers. Transparent pay, instant hiring, zero commission.</p>
-            <div class="hero-buttons">
-                <button class="btn-gradient" onclick="location.href='worker-register.html'">
-                    <i class="fa-solid fa-hard-hat"></i> <span id="btn-worker">Join as Worker</span>
-                </button>
-                <button class="btn-light" onclick="location.href='employer-register.html'">
-                    <i class="fa-solid fa-building"></i> <span id="btn-employer">Hire Now</span>
-                </button>
-            </div>
+    <section class="stats-grid">
+        <div class="stat-card-3d">
+            <h3 id="stat-val-1">12.4k+</h3>
+            <p id="stat-1">Skilled Workers</p>
         </div>
-        <div class="hero-visual">
-            <div class="floating-card card-1"><i class="fa-solid fa-indian-rupee-sign"></i> Transparent Wages</div>
-            <div class="floating-card card-2"><i class="fa-solid fa-bolt"></i> Instant Bulk Hiring</div>
-            <img src="https://cdn-icons-png.flaticon.com/512/3281/3281289.png" alt="Worker Icon" class="hero-icon">
+        <div class="stat-card-3d">
+            <h3 id="stat-val-2">850+</h3>
+            <p id="stat-2">Verified Sites</p>
         </div>
-    </section>
-
-    <section class="ethics-banner">
-        <div class="ethics-content">
-            <div class="ethics-icon-box"><i class="fa-solid fa-ban"></i></div>
-            <h2 id="ethics-title">No Child Labour</h2>
-            <p id="ethics-sub">Kaarya strictly prohibits child labour. We are committed to an ethical, 18+ workforce for a better future.</p>
-        </div>
-    </section>
-
-    <section class="platform-stats">
-        <div class="stat-box">
-            <h3 class="gradient-text">10k+</h3>
-            <p id="stat-1">Active Workers</p>
-        </div>
-        <div class="divider"></div>
-        <div class="stat-box">
-            <h3 class="gradient-text">500+</h3>
-            <p id="stat-2">Trusted Companies</p>
-        </div>
-        <div class="divider"></div>
-        <div class="stat-box">
-            <h3 class="gradient-text">₹0</h3>
+        <div class="stat-card-3d">
+            <h3 id="stat-val-3">₹0</h3>
             <p id="stat-3">Commission</p>
         </div>
     </section>
 
-    <div id="ai-chat-wrapper">
-        <div id="chat-window" class="hidden">
+    <div id="ai-chat-root">
+        <div id="chat-ui" class="chat-closed">
             <div class="chat-header">
-                <span><i class="fa-solid fa-robot"></i> Kaarya AI Assistant</span>
-                <button onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+                <div class="ai-info"><div class="online-dot"></div><strong>Kaarya AI</strong></div>
+                <button onclick="toggleChat()"><i class="fa-solid fa-minus"></i></button>
             </div>
-            <div id="chat-body">
-                <div class="ai-msg">Namaste! I am your Kaarya AI Assistant. How can I help you today?</div>
+            <div id="chat-messages">
+                <div class="msg bot">Namaste! How can I help? Ask about jobs or reporting child labour.</div>
             </div>
-            <div class="chat-footer">
-                <input type="text" id="chat-input" placeholder="Ask about jobs, wages...">
-                <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+            <div class="chat-input-area">
+                <input type="text" id="user-input" placeholder="Type here...">
+                <button onclick="handleSend()"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
         </div>
-        <button id="chat-toggle-btn" onclick="toggleChat()">
-            <i class="fa-solid fa-comment-dots"></i>
-        </button>
+        <button id="chat-trigger" class="btn-3d-chat" onclick="toggleChat()"><i class="fa-solid fa-robot"></i></button>
     </div>
 
-    <footer>
-        <div class="footer-content">
-            <h3 class="logo" style="color:white">Kaarya<span class="dot">.</span></h3>
-            <p id="footer-copy">© 2026 Kaarya App - Empowering India's Workforce.</p>
-        </div>
-    </footer>
-
     <script>
-        // --- LANGUAGE TRANSLATION DICTIONARY ---
+        // 1. THEME TOGGLE
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('#theme-toggle i');
+            if (body.classList.contains('light-theme')) {
+                body.classList.replace('light-theme', 'dark-theme');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                body.classList.replace('dark-theme', 'light-theme');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+
+        // 2. LANGUAGE DICTIONARY
         const translations = {
-            en: { heroTitle: "Hire the Best.\nWithout Middlemen.", heroSub: "Kaarya connects skilled daily-wage professionals directly with top employers. Transparent pay, instant hiring, zero commission.", btnWorker: "Join as Worker", btnEmployer: "Hire Now", stat1: "Active Workers", stat2: "Trusted Companies", stat3: "Commission", ethicsTitle: "No Child Labour", ethicsSub: "Kaarya strictly prohibits child labour. We are committed to an ethical, 18+ workforce for a better future." },
-            hi: { heroTitle: "सर्वश्रेष्ठ को काम पर रखें।\nबिचौलियों के बिना।", heroSub: "कार्य कुशल दैनिक वेतन भोगी पेशेवरों को सीधे शीर्ष नियोक्ताओं से जोड़ता है। पारदर्शी वेतन, तत्काल भर्ती, शून्य कमीशन।", btnWorker: "श्रमिक के रूप में जुड़ें", btnEmployer: "अभी काम पर रखें", stat1: "सक्रिय श्रमिक", stat2: "भरोसेमंद कंपनियाँ", stat3: "कमीशन", ethicsTitle: "बाल श्रम निषेध", ethicsSub: "कार्य बाल श्रम को सख्ती से रोकता है। हम एक बेहतर भविष्य के लिए 18+ कार्यबल के लिए प्रतिबद्ध हैं।" },
-            mai: { heroTitle: "सबसँ नीक कें काज पर राखू।\nबिचौलियाक बिना।", heroSub: "कार्या कुशल दैनिक वेतनभोगी पेशेवरसभ कें सोझे शीर्ष नियोक्तासभ सँ जोड़ैत अछि। पारदर्शी वेतन, तत्काल काज, शून्य कमीशन।", btnWorker: "श्रमिकक रूपमे जुड़ू", btnEmployer: "आब काज पर राखू", stat1: "सक्रिय श्रमिक", stat2: "भरोसेमंद कंपनीसभ", stat3: "कमीशन", ethicsTitle: "बाल श्रम निषेध", ethicsSub: "कार्य बाल श्रम केँ कड़ाई सँ रोकैत अछि। हम भविष्य लेल १८+ कार्यबलक लेल प्रतिबद्ध छी।" }
-            // Note: Add other language strings similarly to expand the dictionary
+            en: { title: "Hire the Best.<br><span class='text-gradient'>Without Middlemen.</span>", sub: "Direct access to skilled professionals. No hidden fees, zero commission.", worker: "Find Work", employer: "Hire Talent", s1: "Skilled Workers", s2: "Verified Sites", s3: "Commission" },
+            hi: { title: "सर्वश्रेष्ठ को काम पर रखें।<br><span class='text-gradient'>बिचौलियों के बिना।</span>", sub: "कुशल पेशेवरों तक सीधी पहुंच। पारदर्शी वेतन, शून्य कमीशन।", worker: "काम खोजें", employer: "प्रतिभा खोजें", s1: "कुशल श्रमिक", s2: "सत्यापित साइटें", s3: "कमीशन" },
+            mai: { title: "सबसँ नीक कें काज पर राखू।<br><span class='text-gradient'>बिचौलियाक बिना।</span>", sub: "कुशल पेशेवरसभ धरि सीधा पहुँच। पारदर्शी वेतन, शून्य कमीशन।", worker: "काज खोजू", employer: "प्रतिभा खोजू", s1: "कुशल श्रमिक", s2: "सत्यापित साइट", s3: "कमीशन" },
+            ta: { title: "சிறந்தவர்களை வேலைக்கு அமர்த்துங்கள்.<br><span class='text-gradient'>இடைத்தரகர்கள் இன்றி.</span>", sub: "திறமையான நிபுணர்களுக்கான நேரடி அணுகல். வெளிப்படையான ஊதியம்.", worker: "வேலை தேடுங்கள்", employer: "ஆட்களைத் தேடுங்கள்", s1: "தொழிலாளர்கள்", s2: "தளங்கள்", s3: "கமிஷன்" },
+            te: { title: "ఉత్తములను నియమించుకోండి.<br><span class='text-gradient'>మధ్యవర్తులు లేకుండా.</span>", sub: "నైపుణ్యం గల నిపుణులకు ప్రత్యక్ష ప్రాప్యత. పారదర్శక చెల్లింపు.", worker: "పని వెతకండి", employer: "ప్రతిభను వెతకండి", s1: "కార్మికులు", s2: "సైట్లు", s3: "కమీషన్" },
+            bn: { title: "সেরাদের নিয়োগ দিন।<br><span class='text-gradient'>মধ্যস্থতাকারী ছাড়া।</span>", sub: "দক্ষ পেশাদারদের সরাসরি অ্যাক্সেস। স্বচ্ছ বেতন, শূন্য কমিশন।", worker: "কাজ খুঁজুন", employer: "কর্মী খুঁজুন", s1: "দক্ষ কর্মী", s2: "যাচাইকৃত সাইট", s3: "কমিশন" },
+            ne: { title: "उत्कृष्टलाई काममा राख्नुहोस्।<br><span class='text-gradient'>बिचौलिया बिना।</span>", sub: "दक्ष पेशेवरहरूमा सीधा पहुँच। पारदर्शी ज्याला, शून्य कमिसन।", worker: "काम खोज्नुहोस्", employer: "प्रतिभा खोज्नुहोस्", s1: "कामदारहरू", s2: "साइटहरू", s3: "कमिसन" }
         };
 
         function changeLanguage() {
             const lang = document.getElementById("languageToggle").value;
-            const t = translations[lang] || translations['en']; 
-            document.getElementById("hero-title").innerHTML = t.heroTitle.replace('\n', '<br><span class="highlight">') + '</span>';
-            document.getElementById("hero-sub").innerText = t.heroSub;
-            document.getElementById("btn-worker").innerText = t.btnWorker;
-            document.getElementById("btn-employer").innerText = t.btnEmployer;
-            document.getElementById("stat-1").innerText = t.stat1;
-            document.getElementById("stat-2").innerText = t.stat2;
-            document.getElementById("stat-3").innerText = t.stat3;
-            document.getElementById("ethics-title").innerText = t.ethicsTitle;
-            document.getElementById("ethics-sub").innerText = t.ethicsSub;
+            const t = translations[lang] || translations['en'];
+            document.getElementById("hero-title").innerHTML = t.title;
+            document.getElementById("hero-sub").innerText = t.sub;
+            document.getElementById("btn-worker").innerText = t.worker;
+            document.getElementById("btn-employer").innerText = t.employer;
+            document.getElementById("stat-1").innerText = t.s1;
+            document.getElementById("stat-2").innerText = t.s2;
+            document.getElementById("stat-3").innerText = t.s3;
         }
 
-        // --- SMART AI CHAT LOGIC ---
-        function toggleChat() {
-            document.getElementById('chat-window').classList.toggle('hidden');
-        }
+        // 3. AI CHAT
+        function toggleChat() { document.getElementById('chat-ui').classList.toggle('chat-closed'); }
 
-        function sendMessage() {
-            const input = document.getElementById('chat-input');
-            const body = document.getElementById('chat-body');
-            const userText = input.value.trim();
-
-            if (!userText) return;
-
-            body.innerHTML += `<div class="user-msg">${userText}</div>`;
-            const query = userText.toLowerCase();
+        function handleSend() {
+            const input = document.getElementById('user-input');
+            const box = document.getElementById('chat-messages');
+            if(!input.value.trim()) return;
+            box.innerHTML += `<div class="user-msg">${input.value}</div>`;
+            const q = input.value.toLowerCase();
             input.value = '';
-
-            let reply = "I'm still learning! Ask me about 'jobs', 'wages', 'attendance', or 'child labour'.";
-
-            if (query.includes('job') || query.includes('work') || query.includes('find')) {
-                reply = "Workers can register and view a live Job Feed. Matches are based on your skills and location.";
-            } else if (query.includes('hire') || query.includes('post') || query.includes('employer')) {
-                reply = "Employers can post jobs and hire multiple workers instantly through the Employer Dashboard.";
-            } else if (query.includes('pay') || query.includes('wage') || query.includes('money') || query.includes('commission')) {
-                reply = "Wages are transparent. Employers pay workers directly via UPI or Cash. Kaarya takes 0% commission.";
-            } else if (query.includes('child') || query.includes('age') || query.includes('minor') || query.includes('18')) {
-                reply = "Kaarya is a 'No Child Labour' platform. All users must be 18+ and provide valid ID verification.";
-            } else if (query.includes('attendance') || query.includes('check')) {
-                reply = "Our 'Digital Attendance' feature allows workers to check-in at the job site to verify work hours.";
-            } else if (query.includes('hi') || query.includes('hello') || query.includes('namaste')) {
-                reply = "Namaste! I am the Kaarya AI Assistant. How can I help you today?";
-            }
-
-            setTimeout(() => {
-                body.innerHTML += `<div class="ai-msg">${reply}</div>`;
-                body.scrollTop = body.scrollHeight;
-            }, 600);
+            let r = "I am here to help!";
+            if(q.includes('child') || q.includes('report') || q.includes('police')) r = "Call 1098 or 100 to report abuse immediately. Kaarya is strictly 18+.";
+            setTimeout(() => { box.innerHTML += `<div class="msg bot">${r}</div>`; box.scrollTop = box.scrollHeight; }, 600);
         }
-
-        // Send on Enter Key
-        document.getElementById('chat-input').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') sendMessage();
-        });
     </script>
 </body>
 </html>

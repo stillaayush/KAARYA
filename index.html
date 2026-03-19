@@ -4,32 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaarya | 3D Ethical Marketplace</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="light-theme">
 
-    <div class="legal-banner">
-        <p>
-            <i class="fa-solid fa-scale-balanced"></i> <strong>STOP CHILD LABOUR:</strong> It is a Crime (Act 1986). 
-            <span class="report-now">REPORT: 
-                <a href="tel:1098"><i class="fa-solid fa-phone"></i> 1098</a> | 
-                <a href="tel:100"><i class="fa-solid fa-shield-halved"></i> 100 (Police)</a>
-            </span>
-        </p>
+    <div class="legal-top-bar">
+        <div class="legal-container">
+            <span><i class="fa-solid fa-scale-balanced"></i> <strong>STRICT NO CHILD LABOUR POLICY</strong></span>
+            <div class="report-links">
+                <span class="emergency-label">REPORT ABUSE:</span>
+                <a href="tel:1098" class="badge-tel">1098</a>
+                <a href="tel:100" class="badge-tel">100</a>
+            </div>
+        </div>
     </div>
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo" onclick="location.href='index.html'">
-                <i class="fa-solid fa-handshake-angle"></i> Kaarya<span>.</span>
-            </div>
+            <div class="logo" onclick="location.href='index.html'">Kaarya<span>.</span></div>
             <div class="nav-right">
-                <button id="theme-toggle" onclick="toggleTheme()" title="Switch Mode">
+                <button id="theme-toggle" class="btn-3d-icon" onclick="toggleTheme()">
                     <i class="fa-solid fa-moon"></i>
                 </button>
-
                 <div class="lang-pill">
                     <i class="fa-solid fa-globe"></i>
                     <select id="languageToggle" onchange="changeLanguage()">
@@ -46,7 +44,6 @@
                         <option value="zh">中文</option>
                     </select>
                 </div>
-                <button class="btn-outline-3d" onclick="location.href='employer-register.html'">Post Job</button>
             </div>
         </div>
     </nav>
@@ -54,83 +51,109 @@
     <header class="hero-section">
         <div class="hero-grid">
             <div class="hero-text">
-                <div class="badge-3d">100% LEGAL & VERIFIED</div>
+                <div class="badge-3d">100% VERIFIED ADULTS</div>
                 <h1 id="hero-title">Hire the Best.<br><span class="text-gradient">Without Middlemen.</span></h1>
-                <p id="hero-sub">Direct access to skilled professionals. No hidden fees, zero commission, and strictly ethical hiring.</p>
-                <div class="hero-cta">
-                    <button class="btn-3d-main" onclick="location.href='worker-register.html'">
-                        <span id="btn-worker">Find Work</span> <i class="fa-solid fa-chevron-right"></i>
+                <p id="hero-sub">Direct access to skilled professionals. Zero commission, full transparency, and strictly ethical hiring.</p>
+                
+                <div class="hero-cta-group">
+                    <button class="btn-main-3d" onclick="location.href='worker-register.html'">
+                        <span id="btn-worker">Find Work</span>
                     </button>
-                    <button class="btn-3d-sub" onclick="location.href='employer-register.html'">
-                        <span id="btn-employer">Hire Talent</span>
+                    <button class="btn-post-3d" onclick="location.href='employer-register.html'">
+                        <span id="btn-post">Post Job</span> <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
             </div>
-            <div class="hero-image-3d">
-                <div class="floating-card-3d">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div><strong>Verified 18+</strong><span>Legal Workforce</span></div>
-                </div>
+            
+            <div class="hero-image-wrap">
+                <div class="flare-light"></div>
                 <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Worker">
             </div>
         </div>
     </header>
 
-    <section class="stats-grid">
-        <div class="stat-card-3d">
-            <h3 id="stat-val-1">12.4k+</h3>
-            <p id="stat-1">Skilled Workers</p>
+    <section class="owner-section">
+        <div class="owner-card-3d">
+            <div class="owner-content">
+                <span class="tag" id="owner-tag">FOUNDER & CEO</span>
+                <h2 id="owner-name">AAYUSH KUMAR</h2>
+                <p id="owner-bio">"At Kaarya, we believe in a future where technology empowers the backbone of our economy. Our platform is built on transparency and a total rejection of child exploitation."</p>
+                <div class="owner-socials">
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="mailto:aayush@kaarya.com"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="stat-card-3d">
-            <h3 id="stat-val-2">850+</h3>
-            <p id="stat-2">Verified Sites</p>
-        </div>
-        <div class="stat-card-3d">
-            <h3 id="stat-val-3">₹0</h3>
-            <p id="stat-3">Commission</p>
+    </section>
+
+    <section class="news-section">
+        <div class="news-grid">
+            <div class="news-card-3d">
+                <span class="tag">LEGAL</span>
+                <h3>Child Labour Act 2026</h3>
+                <p>New penalties enforced. Kaarya helps you stay 100% compliant and ethical.</p>
+            </div>
+            <div class="news-card-3d">
+                <span class="tag">WAGES</span>
+                <h3>Direct UPI Pay</h3>
+                <p>Workers receive 100% of their wages directly via UPI with zero cuts.</p>
+            </div>
         </div>
     </section>
 
     <div id="ai-chat-root">
         <div id="chat-ui" class="chat-closed">
             <div class="chat-header">
-                <div class="ai-info"><div class="online-dot"></div><strong>Kaarya AI</strong></div>
+                <strong>Kaarya AI</strong>
                 <button onclick="toggleChat()"><i class="fa-solid fa-minus"></i></button>
             </div>
             <div id="chat-messages">
-                <div class="msg bot">Namaste! How can I help? Ask about jobs or reporting child labour.</div>
+                <div class="msg bot">Hello! Ask me about jobs or reporting child labour.</div>
             </div>
             <div class="chat-input-area">
-                <input type="text" id="user-input" placeholder="Type here...">
+                <input type="text" id="chat-input" placeholder="Type here...">
                 <button onclick="handleSend()"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
         </div>
-        <button id="chat-trigger" class="btn-3d-chat" onclick="toggleChat()"><i class="fa-solid fa-robot"></i></button>
+        <button id="chat-trigger" class="btn-chat-3d" onclick="toggleChat()"><i class="fa-solid fa-robot"></i></button>
     </div>
 
     <script>
-        // 1. THEME TOGGLE
+        // --- THEME LOGIC ---
         function toggleTheme() {
-            const body = document.body;
+            document.body.classList.toggle('dark-theme');
             const icon = document.querySelector('#theme-toggle i');
-            if (body.classList.contains('light-theme')) {
-                body.classList.replace('light-theme', 'dark-theme');
-                icon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                body.classList.replace('dark-theme', 'light-theme');
-                icon.classList.replace('fa-sun', 'fa-moon');
-            }
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
         }
 
-        // 2. LANGUAGE DICTIONARY
+        // --- CHAT LOGIC ---
+        function toggleChat() { document.getElementById('chat-ui').classList.toggle('chat-closed'); }
+        function handleSend() {
+            const input = document.getElementById('chat-input');
+            const box = document.getElementById('chat-messages');
+            if(!input.value.trim()) return;
+            box.innerHTML += `<div class="msg user-msg">${input.value}</div>`;
+            const q = input.value.toLowerCase();
+            input.value = '';
+            let r = "How can I help you?";
+            if(q.includes('child') || q.includes('report')) r = "Call 1098 or 100 immediately to report abuse.";
+            setTimeout(() => { box.innerHTML += `<div class="msg bot">${r}</div>`; box.scrollTop = box.scrollHeight; }, 600);
+        }
+
+        // --- LANGUAGE LOGIC (11 LANGUAGES) ---
         const translations = {
-            en: { title: "Hire the Best.<br><span class='text-gradient'>Without Middlemen.</span>", sub: "Direct access to skilled professionals. No hidden fees, zero commission.", worker: "Find Work", employer: "Hire Talent", s1: "Skilled Workers", s2: "Verified Sites", s3: "Commission" },
-            hi: { title: "सर्वश्रेष्ठ को काम पर रखें।<br><span class='text-gradient'>बिचौलियों के बिना।</span>", sub: "कुशल पेशेवरों तक सीधी पहुंच। पारदर्शी वेतन, शून्य कमीशन।", worker: "काम खोजें", employer: "प्रतिभा खोजें", s1: "कुशल श्रमिक", s2: "सत्यापित साइटें", s3: "कमीशन" },
-            mai: { title: "सबसँ नीक कें काज पर राखू।<br><span class='text-gradient'>बिचौलियाक बिना।</span>", sub: "कुशल पेशेवरसभ धरि सीधा पहुँच। पारदर्शी वेतन, शून्य कमीशन।", worker: "काज खोजू", employer: "प्रतिभा खोजू", s1: "कुशल श्रमिक", s2: "सत्यापित साइट", s3: "कमीशन" },
-            ta: { title: "சிறந்தவர்களை வேலைக்கு அமர்த்துங்கள்.<br><span class='text-gradient'>இடைத்தரகர்கள் இன்றி.</span>", sub: "திறமையான நிபுணர்களுக்கான நேரடி அணுகல். வெளிப்படையான ஊதியம்.", worker: "வேலை தேடுங்கள்", employer: "ஆட்களைத் தேடுங்கள்", s1: "தொழிலாளர்கள்", s2: "தளங்கள்", s3: "கமிஷன்" },
-            te: { title: "ఉత్తములను నియమించుకోండి.<br><span class='text-gradient'>మధ్యవర్తులు లేకుండా.</span>", sub: "నైపుణ్యం గల నిపుణులకు ప్రత్యక్ష ప్రాప్యత. పారదర్శక చెల్లింపు.", worker: "పని వెతకండి", employer: "ప్రతిభను వెతకండి", s1: "కార్మికులు", s2: "సైట్లు", s3: "కమీషన్" },
-            bn: { title: "সেরাদের নিয়োগ দিন।<br><span class='text-gradient'>মধ্যস্থতাকারী ছাড়া।</span>", sub: "দক্ষ পেশাদারদের সরাসরি অ্যাক্সেস। স্বচ্ছ বেতন, শূন্য কমিশন।", worker: "কাজ খুঁজুন", employer: "কর্মী খুঁজুন", s1: "দক্ষ কর্মী", s2: "যাচাইকৃত সাইট", s3: "কমিশন" },
-            ne: { title: "उत्कृष्टलाई काममा राख्नुहोस्।<br><span class='text-gradient'>बिचौलिया बिना।</span>", sub: "दक्ष पेशेवरहरूमा सीधा पहुँच। पारदर्शी ज्याला, शून्य कमिसन।", worker: "काम खोज्नुहोस्", employer: "प्रतिभा खोज्नुहोस्", s1: "कामदारहरू", s2: "साइटहरू", s3: "कमिसन" }
+            en: { title: "Hire the Best.<br><span class='text-gradient'>Without Middlemen.</span>", sub: "Direct access to skilled professionals. Zero commission, transparency.", worker: "Find Work", post: "Post Job", ownerTag: "FOUNDER & CEO" },
+            hi: { title: "सर्वश्रेष्ठ को काम पर रखें।<br><span class='text-gradient'>बिचौलियों के बिना।</span>", sub: "कुशल पेशेवरों तक सीधी पहुंच। शून्य कमीशन, पूर्ण पारदर्शिता।", worker: "काम खोजें", post: "जॉब पोस्ट करें", ownerTag: "संस्थापक और सीईओ" },
+            mai: { title: "सबसँ नीक कें काज पर राखू।<br><span class='text-gradient'>बिचौलियाक बिना।</span>", sub: "कुशल पेशेवरसभ धरि सीधा पहुँच। शून्य कमीशन।", worker: "काज खोजू", post: "काज पोस्ट करू", ownerTag: "संस्थापक ओ सीईओ" },
+            ta: { title: "சிறந்தவர்களை வேலைக்கு அமர்த்துங்கள்.<br><span class='text-gradient'>இடைத்தரகர்கள் இன்றி.</span>", sub: "நேரடி அணுகல். பூஜ்ஜிய கமிஷன்.", worker: "வேலை தேடுங்கள்", post: "வேலை இடுகை", ownerTag: "நிறுவனர்" },
+            te: { title: "ఉత్తములను నియమించుకోండి.<br><span class='text-gradient'>మధ్యవర్తులు లేకుండా.</span>", sub: "సున్నా కమీషన్, పారదర్శకత.", worker: "పని వెతకండి", post: "జాబ్ పోస్ట్", ownerTag: "వ్యవస్థాపకుడు" },
+            bn: { title: "সেরাদের নিয়োগ দিন।<br><span class='text-gradient'>মধ্যস্থতাকারী ছাড়া।</span>", sub: "সরাসরি অ্যাক্সেস। শূন্য কমিশন।", worker: "কাজ খুঁজুন", post: "জব পোস্ট", ownerTag: "প্রতিষ্ঠাতা" },
+            ne: { title: "उत्कृष्टलाई काममा राख्नुहोस्।<br><span class='text-gradient'>बिचौलिया बिना।</span>", sub: "सीधा पहुँच। शून्य कमिसन।", worker: "काम खोज्नुहोस्", post: "काम पोस्ट", ownerTag: "संस्थापक" },
+            es: { title: "Contrata a los mejores.<br><span class='text-gradient'>Sin intermediarios.</span>", sub: "Acceso directo a profesionales.", worker: "Buscar Trabajo", post: "Publicar", ownerTag: "FUNDADOR" },
+            fr: { title: "Embauchez les meilleurs.<br><span class='text-gradient'>Sans intermédiaires.</span>", sub: "Accès direct aux pros.", worker: "Trouver", post: "Publier", ownerTag: "FONDATEUR" },
+            de: { title: "Stellen Sie die Besten ein.<br><span class='text-gradient'>Ohne Zwischenhändler.</span>", sub: "Direkter Zugang zu Profis.", worker: "Finden", post: "Posten", ownerTag: "GRÜNDER" },
+            zh: { title: "聘请最优秀的人才。<br><span class='text-gradient'>没有中间商。</span>", sub: "直接联系专业人士。", worker: "找工作", post: "发布职位", ownerTag: "创始人" }
         };
 
         function changeLanguage() {
@@ -139,25 +162,8 @@
             document.getElementById("hero-title").innerHTML = t.title;
             document.getElementById("hero-sub").innerText = t.sub;
             document.getElementById("btn-worker").innerText = t.worker;
-            document.getElementById("btn-employer").innerText = t.employer;
-            document.getElementById("stat-1").innerText = t.s1;
-            document.getElementById("stat-2").innerText = t.s2;
-            document.getElementById("stat-3").innerText = t.s3;
-        }
-
-        // 3. AI CHAT
-        function toggleChat() { document.getElementById('chat-ui').classList.toggle('chat-closed'); }
-
-        function handleSend() {
-            const input = document.getElementById('user-input');
-            const box = document.getElementById('chat-messages');
-            if(!input.value.trim()) return;
-            box.innerHTML += `<div class="user-msg">${input.value}</div>`;
-            const q = input.value.toLowerCase();
-            input.value = '';
-            let r = "I am here to help!";
-            if(q.includes('child') || q.includes('report') || q.includes('police')) r = "Call 1098 or 100 to report abuse immediately. Kaarya is strictly 18+.";
-            setTimeout(() => { box.innerHTML += `<div class="msg bot">${r}</div>`; box.scrollTop = box.scrollHeight; }, 600);
+            document.getElementById("btn-post").innerText = t.post;
+            document.getElementById("owner-tag").innerText = t.ownerTag;
         }
     </script>
 </body>

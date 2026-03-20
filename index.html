@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaarya | Spatial 3D Multilingual Marketplace</title>
+    <title>Kaarya | Professional 3D SafePay Marketplace</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -13,13 +13,12 @@
     <div class="legal-bar-blood">
         <div class="container flex-between">
             <p id="legal-text" class="pulse-text">
-                <i class="fa-solid fa-skull-crossbones"></i> 
-                <strong id="trans-legal-policy">STRICT NO CHILD LABOUR POLICY</strong>
+                <i class="fa-solid fa-shield-halved"></i> 
+                <strong id="trans-policy">STRICT NO CHILD LABOUR POLICY</strong>
             </p>
             <div class="emergency-links">
-                <span id="trans-report-label">REPORT ABUSE:</span> 
-                <a href="tel:1098" class="tel-badge-blood">1098</a> | 
-                <a href="tel:100" class="tel-badge-blood">100</a>
+                <span id="trans-report">REPORT:</span> 
+                <a href="tel:1098" class="tel-badge-blood">1098</a> | <a href="tel:100" class="tel-badge-blood">100</a>
             </div>
         </div>
     </div>
@@ -54,9 +53,9 @@
     <header class="hero-stage">
         <div class="container hero-grid">
             <div class="hero-content">
-                <div class="pill-badge" id="trans-badge">ETHICAL INNOVATION</div>
-                <h1 id="hero-title">Hire Top Talent.<br><span class="ambient-text">Zero Middlemen.</span></h1>
-                <p id="hero-sub">Direct access to professionals with zero commission and total transparency in every transaction.</p>
+                <div class="pill-badge" id="trans-badge">SECURE SAFEPAY ENABLED</div>
+                <h1 id="hero-title">Hire with Confidence.<br><span class="ambient-text">Pay with SafePay.</span></h1>
+                <p id="hero-sub">Direct access to professionals with zero commission. Your payments are held in Escrow until the work is verified.</p>
                 <div class="cta-group">
                     <button class="btn-3d primary" onclick="location.href='worker-register.html'"><span id="btn-worker">Find Work</span></button>
                     <button class="btn-3d secondary" onclick="location.href='employer-register.html'"><span id="btn-post">Post Job</span></button>
@@ -65,33 +64,42 @@
             <div class="hero-visual">
                 <div class="orange-flare"></div>
                 <div class="image-box-3d">
+                    <div class="floating-badge-3d"><i class="fa-solid fa-check-to-slot"></i> SafePay Verified</div>
                     <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Worker">
                 </div>
             </div>
         </div>
     </header>
 
+    <section class="safepay-section">
+        <div class="container">
+            <h2 class="section-title-3d" id="sp-head">How SafePay Protects You</h2>
+            <div class="safepay-grid">
+                <div class="safepay-card-3d">
+                    <i class="fa-solid fa-vault icon-neo"></i>
+                    <h3 id="sp-1-t">1. Escrow Lock</h3>
+                    <p id="sp-1-d">Funds are held in a secure 3D vault when the job starts.</p>
+                </div>
+                <div class="safepay-card-3d">
+                    <i class="fa-solid fa-user-shield icon-neo"></i>
+                    <h3 id="sp-2-t">2. Work Verified</h3>
+                    <p id="sp-2-d">Professional completes the task and uploads proof.</p>
+                </div>
+                <div class="safepay-card-3d">
+                    <i class="fa-solid fa-money-bill-transfer icon-neo"></i>
+                    <h3 id="sp-3-t">3. Instant Release</h3>
+                    <p id="sp-3-d">You approve, and the worker gets paid instantly via UPI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="founder-section" id="owner-info">
         <div class="container">
             <div class="owner-card-3d">
                 <span class="tag-3d" id="owner-tag">FOUNDER & CEO</span>
                 <h2>AAYUSH KUMAR</h2>
-                <p id="owner-bio">"At Kaarya, our priority is dignity and safety. We are building a tech-driven future that protects the rights of every worker."</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="news-section">
-        <div class="container news-grid">
-            <div class="news-card-3d">
-                <div class="icon-3d"><i class="fa-solid fa-gavel"></i></div>
-                <h3 id="news-1-title">Labour Protection 2026</h3>
-                <p id="news-1-desc">New automated age-verification protocols are live for all site supervisors.</p>
-            </div>
-            <div class="news-card-3d">
-                <div class="icon-3d"><i class="fa-solid fa-bolt"></i></div>
-                <h3 id="news-2-title">Direct UPI Transfer</h3>
-                <p id="news-2-desc">Instant wage settlement enabled. Money goes straight from employer to worker.</p>
+                <p id="owner-bio">"SafePay is the backbone of trust. At Kaarya, we ensure every drop of sweat is paid for fairly and on time."</p>
             </div>
         </div>
     </section>
@@ -100,27 +108,48 @@
         function toggleTheme() { document.body.classList.toggle('dark-theme'); }
         function scrollToOwner() { document.getElementById('owner-info').scrollIntoView({ behavior: 'smooth' }); }
 
+        // THE LANGUAGE DICTIONARY - COMPLETELY SYNCED
         const translations = {
-            en: { policy: "STRICT NO CHILD LABOUR POLICY", report: "REPORT ABUSE:", badge: "ETHICAL INNOVATION", title: "Hire Top Talent.<br><span class='ambient-text'>Zero Middlemen.</span>", sub: "Direct access to professionals with zero commission.", worker: "Find Work", post: "Post Job", tag: "FOUNDER & CEO", bio: '"Building technology that respects human dignity."', n1t: "Labour Protection 2026", n2t: "Direct UPI Transfer" },
-            hi: { policy: "सख्त बाल श्रम निषेध नीति", report: "रिपोर्ट करें:", badge: "नैतिक नवाचार", title: "शीर्ष प्रतिभा नियुक्त करें।<br><span class='ambient-text'>बिना बिचौलियों के।</span>", sub: "बिना किसी कमीशन के पेशेवरों तक सीधी पहुँच।", worker: "काम खोजें", post: "जॉब पोस्ट", tag: "संस्थापक और सीईओ", bio: '"मानवीय गरिमा का सम्मान करने वाली तकनीक का निर्माण।"', n1t: "श्रम सुरक्षा 2026", n2t: "सीधा UPI स्थानांतरण" },
-            mai: { policy: "सख्त बाल श्रम निषेध नीति", report: "रिपोर्ट करू:", badge: "नैतिक नवाचार", title: "सबसँ नीक कें काज पर राखू।<br><span class='ambient-text'>बिचौलियाक बिना।</span>", sub: "बिना कोनो कमीशनक सीधा पहुँच।", worker: "काज खोजू", post: "काज पोस्ट करू", tag: "संस्थापक ओ सीईओ", bio: '"मानवीय गरिमाक सम्मान करय बला तकनीकक निर्माण।"', n1t: "श्रम सुरक्षा 2026", n2t: "सीधा UPI भुगतान" }
-            // Bengali, Tamil, Telugu etc are integrated similarly...
+            en: {
+                policy: "STRICT NO CHILD LABOUR POLICY", report: "REPORT:", badge: "SECURE SAFEPAY ENABLED",
+                title: "Hire with Confidence.<br><span class='ambient-text'>Pay with SafePay.</span>",
+                sub: "Direct access to professionals with zero commission. Your payments are held in Escrow until the work is verified.",
+                worker: "Find Work", post: "Post Job", tag: "FOUNDER & CEO",
+                spHead: "How SafePay Protects You", sp1t: "1. Escrow Lock", sp2t: "2. Work Verified", sp3t: "3. Instant Release"
+            },
+            hi: {
+                policy: "सख्त बाल श्रम निषेध नीति", report: "रिपोर्ट:", badge: "सुरक्षित सेफ-पे सक्षम",
+                title: "आत्मविश्वास के साथ नियुक्त करें।<br><span class='ambient-text'>सेफ-पे के साथ भुगतान करें।</span>",
+                sub: "बिना किसी कमीशन के पेशेवरों तक सीधी पहुँच। आपका भुगतान एस्क्रो में तब तक सुरक्षित रहता है जब तक कार्य सत्यापित न हो जाए।",
+                worker: "काम खोजें", post: "जॉब पोस्ट", tag: "संस्थापक और सीईओ",
+                spHead: "सेफ-पे आपकी सुरक्षा कैसे करता है", sp1t: "1. एस्क्रो लॉक", sp2t: "2. कार्य सत्यापित", sp3t: "3. त्वरित भुगतान"
+            },
+            mai: {
+                policy: "सख्त बाल श्रम निषेध नीति", report: "रिपोर्ट करू:", badge: "सुरक्षित सेफ-पे सक्षम",
+                title: "विश्वासक संग नियुक्त करू।<br><span class='ambient-text'>सेफ-पे सँ भुगतान करू।</span>",
+                sub: "बिना कोनो कमीशनक सीधा पहुँच। अहाँक भुगतान एस्क्रो में सुरक्षित रहत जखन धरि काज सत्यापित नहि भऽ जाए।",
+                worker: "काज खोजू", post: "काज पोस्ट करू", tag: "संस्थापक ओ सीईओ",
+                spHead: "सेफ-पे अहाँक सुरक्षा कोना करैत अछि", sp1t: "1. एस्क्रो लॉक", sp2t: "2. काज सत्यापित", sp3t: "3. तुरंत भुगतान"
+            }
         };
 
         function changeLanguage() {
             const lang = document.getElementById("languageToggle").value;
             const t = translations[lang] || translations.en;
-            document.getElementById("trans-legal-policy").innerText = t.policy;
-            document.getElementById("trans-report-label").innerText = t.report;
+
+            // UPDATING ALL IDs - ENSURE IDs MATCH HTML
+            document.getElementById("trans-policy").innerText = t.policy;
+            document.getElementById("trans-report").innerText = t.report;
             document.getElementById("trans-badge").innerText = t.badge;
             document.getElementById("hero-title").innerHTML = t.title;
             document.getElementById("hero-sub").innerText = t.sub;
             document.getElementById("btn-worker").innerText = t.worker;
             document.getElementById("btn-post").innerText = t.post;
             document.getElementById("owner-tag").innerText = t.tag;
-            document.getElementById("owner-bio").innerText = t.bio;
-            document.getElementById("news-1-title").innerText = t.n1t;
-            document.getElementById("news-2-title").innerText = t.n2t;
+            document.getElementById("sp-head").innerText = t.spHead;
+            document.getElementById("sp-1-t").innerText = t.sp1t;
+            document.getElementById("sp-2-t").innerText = t.sp2t;
+            document.getElementById("sp-3-t").innerText = t.sp3t;
         }
     </script>
 </body>

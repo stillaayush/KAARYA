@@ -1,29 +1,16 @@
-require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-
+const path = require('path');
 const app = express();
-app.use(cors());
+
+// CRITICAL: This line links your CSS and Images to the HTML
+app.use(express.static(__dirname));
 app.use(express.json());
-app.use(express.static(__dirname)); 
 
-// Connect to Gemini
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+// Routes for all your pages
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/worker-register', (req, res) => res.sendFile(path.join(__dirname, 'worker-register.html')));
+app.get('/worker-dashboard', (req, res) => res.sendFile(path.join(__dirname, 'worker-dashboard.html')));
+app.get('/employer-register', (req, res) => res.sendFile(path.join(__dirname, 'employer-register.html')));
 
-app.post('/chat', async (req, res) => {
-    try {
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-        const systemPrompt = `You are Kaarya AI, founded by AAYUSH KUMAR. 
-        Context: Kaarya is an ethical 3D marketplace. 
-        Strict Policy: Zero child labour. Report to 1098 immediately if abuse is suspected.
-        Tone: Professional, helpful, and concise.`;
-        
-        const result = await model.generateContent([systemPrompt, req.body.message]);
-        res.json({ reply: result.response.text() });
-    } catch (err) {
-        res.status(500).json({ reply: "AI Error: Is your .env key correct?" });
-    }
-});
-
-app.listen(3000, () => console.log('🚀 Kaarya AI Active: http://localhost:3000'));
+const PORT = 3000;
+app.listen(PORT, () => console.log(`🚀 KAARYA SYSTEM LIVE: http://localhost:${PORT}`));

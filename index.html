@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaarya | Professional 3D SafePay Marketplace</title>
+    <title>Kaarya | Professional 3D Spatial Marketplace</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -12,9 +12,9 @@
 
     <div class="legal-bar-blood">
         <div class="container flex-between">
-            <p id="legal-text" class="pulse-text">
+            <p id="trans-policy" class="pulse-text">
                 <i class="fa-solid fa-shield-halved"></i> 
-                <strong id="trans-policy">STRICT NO CHILD LABOUR POLICY</strong>
+                <strong>STRICT NO CHILD LABOUR POLICY</strong>
             </p>
             <div class="emergency-links">
                 <span id="trans-report">REPORT:</span> 
@@ -54,42 +54,48 @@
         <div class="container hero-grid">
             <div class="hero-content">
                 <div class="pill-badge" id="trans-badge">SECURE SAFEPAY ENABLED</div>
-                <h1 id="hero-title">Hire with Confidence.<br><span class="ambient-text">Pay with SafePay.</span></h1>
+                <h1 id="hero-title">Hire Top Talent.<br><span class="ambient-text">Verified Skills.</span></h1>
                 <p id="hero-sub">Direct access to professionals with zero commission. Your payments are held in Escrow until the work is verified.</p>
                 <div class="cta-group">
                     <button class="btn-3d primary" onclick="location.href='worker-register.html'"><span id="btn-worker">Find Work</span></button>
                     <button class="btn-3d secondary" onclick="location.href='employer-register.html'"><span id="btn-post">Post Job</span></button>
                 </div>
             </div>
-            <div class="hero-visual">
+            <div class="hero-visual-container">
                 <div class="orange-flare"></div>
                 <div class="image-box-3d">
-                    <div class="floating-badge-3d"><i class="fa-solid fa-check-to-slot"></i> SafePay Verified</div>
+                    <div class="floating-badge-3d"><i class="fa-solid fa-star"></i> 4.9 Verified</div>
                     <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Worker">
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="safepay-section">
+    <section class="sponsor-section">
         <div class="container">
-            <h2 class="section-title-3d" id="sp-head">How SafePay Protects You</h2>
-            <div class="safepay-grid">
-                <div class="safepay-card-3d">
-                    <i class="fa-solid fa-vault icon-neo"></i>
-                    <h3 id="sp-1-t">1. Escrow Lock</h3>
-                    <p id="sp-1-d">Funds are held in a secure 3D vault when the job starts.</p>
-                </div>
-                <div class="safepay-card-3d">
-                    <i class="fa-solid fa-user-shield icon-neo"></i>
-                    <h3 id="sp-2-t">2. Work Verified</h3>
-                    <p id="sp-2-d">Professional completes the task and uploads proof.</p>
-                </div>
-                <div class="safepay-card-3d">
-                    <i class="fa-solid fa-money-bill-transfer icon-neo"></i>
-                    <h3 id="sp-3-t">3. Instant Release</h3>
-                    <p id="sp-3-d">You approve, and the worker gets paid instantly via UPI.</p>
-                </div>
+            <h2 class="section-title-3d" id="trans-sponsor-head">Exclusive Ethical Sponsor</h2>
+            <div class="sponsor-brand-wrap">
+                <div class="sponsor-card-3d">ODDSOCEAN</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-grid-section">
+        <div class="container grid-3col">
+            <div class="card-3d feature-card">
+                <i class="fa-solid fa-vault icon-neo"></i>
+                <h3 id="f1-t">SafePay Escrow</h3>
+                <p id="f1-d">Funds are locked in a 3D vault until you approve the work.</p>
+            </div>
+            <div class="card-3d feature-card">
+                <i class="fa-solid fa-users-viewfinder icon-neo"></i>
+                <h3 id="f2-t">Mutual Ratings</h3>
+                <p id="f2-d">Employers and Workers rate each other for total transparency.</p>
+            </div>
+            <div class="card-3d feature-card">
+                <i class="fa-solid fa-microchip icon-neo"></i>
+                <h3 id="f3-t">Skill Verification</h3>
+                <p id="f3-d">Real-time Aadhaar and Skill testing for every professional.</p>
             </div>
         </div>
     </section>
@@ -99,7 +105,7 @@
             <div class="owner-card-3d">
                 <span class="tag-3d" id="owner-tag">FOUNDER & CEO</span>
                 <h2>AAYUSH KUMAR</h2>
-                <p id="owner-bio">"SafePay is the backbone of trust. At Kaarya, we ensure every drop of sweat is paid for fairly and on time."</p>
+                <p id="owner-bio">"At Kaarya, our priority is dignity and safety. We are building a tech-driven future that protects the rights of every worker."</p>
             </div>
         </div>
     </section>
@@ -108,48 +114,35 @@
         function toggleTheme() { document.body.classList.toggle('dark-theme'); }
         function scrollToOwner() { document.getElementById('owner-info').scrollIntoView({ behavior: 'smooth' }); }
 
-        // THE LANGUAGE DICTIONARY - COMPLETELY SYNCED
         const translations = {
-            en: {
+            en: { 
                 policy: "STRICT NO CHILD LABOUR POLICY", report: "REPORT:", badge: "SECURE SAFEPAY ENABLED",
-                title: "Hire with Confidence.<br><span class='ambient-text'>Pay with SafePay.</span>",
-                sub: "Direct access to professionals with zero commission. Your payments are held in Escrow until the work is verified.",
-                worker: "Find Work", post: "Post Job", tag: "FOUNDER & CEO",
-                spHead: "How SafePay Protects You", sp1t: "1. Escrow Lock", sp2t: "2. Work Verified", sp3t: "3. Instant Release"
+                title: "Hire Top Talent.<br><span class='ambient-text'>Verified Skills.</span>",
+                worker: "Find Work", post: "Post Job", sponsor: "Exclusive Ethical Sponsor", tag: "FOUNDER & CEO"
             },
-            hi: {
+            hi: { 
                 policy: "सख्त बाल श्रम निषेध नीति", report: "रिपोर्ट:", badge: "सुरक्षित सेफ-पे सक्षम",
-                title: "आत्मविश्वास के साथ नियुक्त करें।<br><span class='ambient-text'>सेफ-पे के साथ भुगतान करें।</span>",
-                sub: "बिना किसी कमीशन के पेशेवरों तक सीधी पहुँच। आपका भुगतान एस्क्रो में तब तक सुरक्षित रहता है जब तक कार्य सत्यापित न हो जाए।",
-                worker: "काम खोजें", post: "जॉब पोस्ट", tag: "संस्थापक और सीईओ",
-                spHead: "सेफ-पे आपकी सुरक्षा कैसे करता है", sp1t: "1. एस्क्रो लॉक", sp2t: "2. कार्य सत्यापित", sp3t: "3. त्वरित भुगतान"
+                title: "शीर्ष प्रतिभा नियुक्त करें।<br><span class='ambient-text'>सत्यापित कौशल।</span>",
+                worker: "काम खोजें", post: "जॉब पोस्ट", sponsor: "विशेष नैतिक प्रायोजक", tag: "संस्थापक और सीईओ"
             },
-            mai: {
+            mai: { 
                 policy: "सख्त बाल श्रम निषेध नीति", report: "रिपोर्ट करू:", badge: "सुरक्षित सेफ-पे सक्षम",
-                title: "विश्वासक संग नियुक्त करू।<br><span class='ambient-text'>सेफ-पे सँ भुगतान करू।</span>",
-                sub: "बिना कोनो कमीशनक सीधा पहुँच। अहाँक भुगतान एस्क्रो में सुरक्षित रहत जखन धरि काज सत्यापित नहि भऽ जाए।",
-                worker: "काज खोजू", post: "काज पोस्ट करू", tag: "संस्थापक ओ सीईओ",
-                spHead: "सेफ-पे अहाँक सुरक्षा कोना करैत अछि", sp1t: "1. एस्क्रो लॉक", sp2t: "2. काज सत्यापित", sp3t: "3. तुरंत भुगतान"
+                title: "सबसँ नीक कें काज पर राखू।<br><span class='ambient-text'>सत्यापित कौशल।</span>",
+                worker: "काज खोजू", post: "काज पोस्ट करू", sponsor: "विशेष नैतिक प्रायोजक", tag: "संस्थापक ओ सीईओ"
             }
         };
 
         function changeLanguage() {
             const lang = document.getElementById("languageToggle").value;
             const t = translations[lang] || translations.en;
-
-            // UPDATING ALL IDs - ENSURE IDs MATCH HTML
             document.getElementById("trans-policy").innerText = t.policy;
             document.getElementById("trans-report").innerText = t.report;
             document.getElementById("trans-badge").innerText = t.badge;
             document.getElementById("hero-title").innerHTML = t.title;
-            document.getElementById("hero-sub").innerText = t.sub;
             document.getElementById("btn-worker").innerText = t.worker;
             document.getElementById("btn-post").innerText = t.post;
+            document.getElementById("trans-sponsor-head").innerText = t.sponsor;
             document.getElementById("owner-tag").innerText = t.tag;
-            document.getElementById("sp-head").innerText = t.spHead;
-            document.getElementById("sp-1-t").innerText = t.sp1t;
-            document.getElementById("sp-2-t").innerText = t.sp2t;
-            document.getElementById("sp-3-t").innerText = t.sp3t;
         }
     </script>
 </body>

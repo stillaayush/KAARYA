@@ -1,105 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaarya | Register as Worker</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .form-container { max-width: 500px; margin: 40px auto; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .input-group { margin-bottom: 20px; text-align: left; }
-        label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--brand-navy); font-family: 'Poppins', sans-serif;}
-        input, select { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
-        input:focus, select:focus { outline: none; border-color: var(--brand-accent); }
-    </style>
-</head>
-<body>
-    <header class="glass-header">
-        <div class="logo" onclick="location.href='index.html'" style="cursor: pointer;">Kaarya<span class="dot">.</span></div>
-    </header>
-
-    <div class="form-container">
-        <h2 style="font-family: 'Poppins'; color: var(--brand-dark); margin-bottom: 10px;">Create Worker Profile</h2>
-        <p style="color: var(--text-muted); margin-bottom: 25px;">Join Kaarya and find jobs directly.</p>
-
-        <form id="registerForm">
-            <div class="input-group">
-                <label>Full Name</label>
-                <input type="text" id="name" placeholder="e.g. Ramesh Kumar" required>
-            </div>
-            
-            <div class="input-group">
-                <label>Phone Number (Must be unique)</label>
-                <input type="tel" id="phone" placeholder="10-digit mobile number" required>
-            </div>
-
-            <div class="input-group">
-                <label>Primary Skill</label>
-                <select id="skill" required>
-                    <option value="Construction helper">Construction Helper</option>
-                    <option value="Mason">Mason</option>
-                    <option value="Painter">Painter</option>
-                    <option value="Plumber">Plumber</option>
-                    <option value="Electrician">Electrician</option>
-                </select>
-            </div>
-
-            <div class="input-group">
-                <label>Years of Experience</label>
-                <input type="number" id="experience" placeholder="e.g. 3" required>
-            </div>
-
-            <div class="input-group">
-                <label>Expected Daily Wage (₹)</label>
-                <input type="number" id="wage" placeholder="e.g. 600" required>
-            </div>
-
-            <div class="input-group">
-                <label>City / Location</label>
-                <input type="text" id="location" placeholder="e.g. Delhi" required>
-            </div>
-
-            <button type="submit" class="btn-gradient" style="width: 100%; margin-top: 10px;">Register Now</button>
-        </form>
+<head><link rel="stylesheet" href="style.css"><title>Register | Kaarya</title></head>
+<body class="light-theme">
+    <div class="container" style="padding-top:100px; display:flex; justify-content:center;">
+        <div class="card-3d" style="width:100%; max-width:500px;">
+            <h2 style="margin-bottom:20px;">Worker Registration</h2>
+            <form onsubmit="location.href='/worker-dashboard'; return false;">
+                <input type="text" placeholder="Full Name" style="width:100%; padding:15px; margin-bottom:15px; border-radius:10px; border:1px solid var(--border);">
+                <input type="text" placeholder="Aadhaar Number" style="width:100%; padding:15px; margin-bottom:15px; border-radius:10px; border:1px solid var(--border);">
+                <button class="btn-3d primary" style="width:100%;">Create Account</button>
+            </form>
+        </div>
     </div>
-
-    <script>
-        document.getElementById('registerForm').addEventListener('submit', async function(e) {
-            e.preventDefault(); 
-            
-            // 1. Gather the data
-            const workerData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                skills: [document.getElementById('skill').value],
-                experienceYears: document.getElementById('experience').value,
-                expectedDailyWage: document.getElementById('wage').value,
-                location: document.getElementById('location').value
-            };
-
-            try {
-                // 2. Send data to server using the relative URL
-                const response = await fetch('/api/register-worker', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(workerData)
-                });
-
-                const result = await response.json();
-
-                // 3. Handle the response
-                if (response.ok) {
-                    alert('Success! Your profile is created. Taking you to your dashboard.');
-                    window.location.href = 'worker-dashboard.html'; 
-                } else {
-                    alert('Error from server: ' + result.error + '\n(Make sure you are using a NEW phone number!)');
-                }
-            } catch (err) {
-                alert('Connection failed. Make sure your VS Code terminal is running "node server.js"!');
-                console.error(err);
-            }
-        });
-    </script>
 </body>
 </html>

@@ -1,64 +1,84 @@
 /* DESIGN SYSTEM */
-.light-theme { --bg: #F8FAFC; --text: #0F172A; --card: #FFFFFF; --border: #E2E8F0; --nav: rgba(255,255,255,0.85); }
-.dark-theme { --bg: #0B0F1A; --text: #F8FAFC; --card: #161B28; --border: #334155; --nav: rgba(11,15,26,0.85); }
-:root { --primary: #FF6B00; --blood: #8B0000; --danger-bright: #FF0000; --success: #10B981; }
+:root { --primary: #FF6B00; --blood: #8B0000; --bg: #F8FAFC; --text: #0F172A; --card: #FFFFFF; }
+.dark-theme { --bg: #0B0F1A; --text: #F8FAFC; --card: #1E293B; }
 
-* { margin:0; padding:0; box-sizing:border-box; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+* { margin:0; padding:0; box-sizing:border-box; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
-.flex-between { display: flex; justify-content: space-between; align-items: center; }
 
-/* 1. BLOOD RED BAR (FIXED Z-INDEX) */
-.legal-bar-blood { background: var(--blood); color: white; padding: 12px 0; position: sticky; top: 0; z-index: 10000; border-bottom: 2px solid var(--danger-bright); box-shadow: 0 10px 30px rgba(139, 0, 0, 0.5); text-align: center; }
+/* 1. BLOOD RED BAR */
+.legal-bar-blood { background: var(--blood); color: white; padding: 12px 0; position: sticky; top: 0; z-index: 10000; border-bottom: 2px solid #FF0000; text-align: center; }
 .pulse-text { animation: pulse 2s infinite; font-weight: 800; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 .tel-badge-blood { background: white; color: var(--blood); padding: 4px 10px; border-radius: 6px; text-decoration: none; font-weight: 900; margin-left: 5px; }
 
 /* 2. SPATIAL NAVBAR */
-.navbar-spatial { background: var(--nav); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); position: sticky; top: 43px; z-index: 9000; padding: 15px 0; }
-.logo-spatial { font-size: 1.8rem; font-weight: 900; color: inherit; cursor: pointer; transform: perspective(500px); }
+.navbar-spatial { background: rgba(255,255,255,0.8); backdrop-filter: blur(15px); position: sticky; top: 41px; z-index: 9000; padding: 15px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.logo-spatial { font-size: 1.8rem; font-weight: 900; cursor: pointer; transform: perspective(500px); }
 .logo-spatial span { color: var(--primary); }
-.logo-spatial:hover { transform: perspective(500px) rotateY(25deg) translateZ(15px); text-shadow: -5px 5px 15px rgba(0,0,0,0.2); }
+.logo-spatial:hover { transform: perspective(500px) rotateY(20deg) translateZ(15px); }
 
-/* 3. HERO & ISOLATED 3D */
-.hero-stage { padding: 80px 0; position: relative; z-index: 10; }
+/* 3. FIXED 3D ENGINE & FLARE */
+.hero-stage { padding: 80px 0; }
 .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
 .ambient-text { background: linear-gradient(90deg, #FF6B00, #FFB800); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
 
-.hero-visual-container { perspective: 1500px; transform-style: preserve-3d; position: relative; }
-.hero-visual-container:hover { transform: rotateY(-15deg) rotateX(10deg); }
-.image-box-3d img { width: 100%; border-radius: 40px; border: 1px solid var(--border); box-shadow: 0 40px 80px rgba(0,0,0,0.2); position: relative; z-index: 2; }
-.orange-flare { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translateZ(-30px); width: 120%; height: 120%; background: radial-gradient(circle, rgba(255,107,0,0.5) 0%, rgba(255,107,0,0) 70%); filter: blur(50px); z-index: 1; }
+.hero-visual-3d { perspective: 2000px; display: flex; justify-content: center; }
+.scene-3d { position: relative; transform-style: preserve-3d; width: 100%; height: 450px; }
 
-/* 4. EXCLUSIVE SPONSOR (ODDSOCEAN) */
-.sponsor-section { padding: 60px 0; text-align: center; }
-.sponsor-card-3d { 
-    display: inline-block; background: var(--card); padding: 25px 50px; border-radius: 20px; 
-    border: 1px solid var(--border); font-size: 2.2rem; font-weight: 900; 
-    color: var(--text); opacity: 0.5; filter: grayscale(1); 
-    transition: 0.5s; cursor: pointer; perspective: 1000px;
-}
-.sponsor-card-3d:hover { 
-    transform: translateZ(40px) scale(1.1); 
-    opacity: 1; filter: grayscale(0); 
-    color: var(--primary); border-color: var(--primary); 
-    box-shadow: 0 25px 50px rgba(255,107,0,0.2);
+/* ORANGE FLARE LAYER (FIXED) */
+.orange-flare-layer {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%) translateZ(-50px); /* Sits BEHIND image */
+    width: 130%; height: 130%;
+    background: radial-gradient(circle, rgba(255,107,0,0.5) 0%, transparent 70%);
+    filter: blur(60px); z-index: 1;
 }
 
-/* 5. 3D GRID CARDS */
-.grid-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 80px 0; }
-.card-3d { 
-    background: var(--card); padding: 40px; border-radius: 30px; border: 1px solid var(--border); 
-    text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.05); transform: perspective(1000px);
-}
-.card-3d:hover { transform: translateY(-15px) rotateX(5deg) translateZ(10px); border-color: var(--primary); }
-.icon-neo { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+/* IMAGE HOVER LAYER (FIXED) */
+.image-hover-layer { position: relative; z-index: 2; transform-style: preserve-3d; }
+.image-hover-layer img { width: 100%; border-radius: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.1); }
 
-/* 6. BUTTONS */
-.btn-3d { padding: 18px 36px; border-radius: 18px; font-weight: 800; cursor: pointer; border: none; font-size: 1rem; }
-.btn-3d.primary { background: var(--primary); color: white; border-bottom: 6px solid #cc5500; }
-.btn-3d.secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); border-bottom: 6px solid var(--border); }
+/* THE HOVER EFFECT */
+.image-hover-layer:hover {
+    transform: rotateY(-15deg) rotateX(10deg) translateZ(50px); /* POPS TOWARD USER */
+    cursor: pointer;
+}
+
+.floating-pro-badge {
+    position: absolute; top: 20px; left: -20px;
+    background: var(--primary); color: white;
+    padding: 10px 20px; border-radius: 50px;
+    font-weight: 800; transform: translateZ(80px); /* FLOATS ABOVE IMAGE */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* 4. BUTTONS & TOGGLES */
+.btn-3d, .btn-icon-3d, .lang-pill-3d { 
+    border: none; cursor: pointer; font-weight: 800; border-bottom: 5px solid #CBD5E1; border-radius: 14px;
+}
+.btn-3d.primary { background: var(--primary); color: white; border-bottom-color: #cc5500; padding: 18px 36px; }
+.btn-3d.secondary { background: var(--card); color: var(--text); padding: 18px 36px; }
 .btn-3d:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(255,107,0,0.3); }
+.btn-3d:active { transform: translateY(2px); border-bottom-width: 0; }
 
-/* FOUNDER CARD */
-.owner-card-3d { background: var(--card); padding: 60px; border-radius: 40px; border: 1px solid var(--border); border-bottom: 12px solid var(--primary); text-align: center; box-shadow: 0 40px 80px rgba(0,0,0,0.1); margin: 40px 0; }
+.lang-pill-3d { background: var(--card); padding: 10px 20px; border-radius: 50px; display: flex; align-items: center; gap: 10px; border-bottom: 4px solid #CBD5E1; }
+.lang-pill-3d select { background: transparent; border: none; font-weight: 800; color: inherit; outline: none; }
+
+/* 5. ODDSOCEAN SPONSOR & FOUNDER */
+.sponsor-card-3d {
+    background: var(--card); padding: 50px; border-radius: 40px;
+    font-size: 3rem; font-weight: 900; color: var(--text);
+    opacity: 0.4; filter: grayscale(1); margin-top: 30px;
+    border: 1px solid rgba(0,0,0,0.05); text-align: center;
+}
+.sponsor-card-3d:hover {
+    opacity: 1; filter: grayscale(0); color: var(--primary);
+    transform: scale(1.1) translateZ(30px);
+}
+
+.owner-card-3d {
+    background: var(--card); padding: 60px; border-radius: 40px;
+    border: 1px solid rgba(0,0,0,0.05); border-bottom: 12px solid var(--primary);
+    text-align: center; margin-top: 40px;
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaarya | Professional 3D Spatial Marketplace</title>
+    <title>Kaarya | Professional 3D Spatial Ecosystem</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -29,8 +29,10 @@
                 <div class="logo-spatial" onclick="scrollToOwner()">Kaarya<span>.</span></div>
             </div>
             <div class="nav-right">
-                <button id="theme-toggle" class="btn-icon" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
-                <div class="lang-pill">
+                <button id="theme-toggle" class="btn-icon-3d" onclick="document.body.classList.toggle('dark-theme')">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <div class="lang-pill-3d">
                     <i class="fa-solid fa-globe"></i>
                     <select id="languageToggle" onchange="changeLanguage()">
                         <option value="en">English</option>
@@ -39,11 +41,6 @@
                         <option value="bn">বাংলা (Bengali)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="mr">मराठी (Marathi)</option>
-                        <option value="gu">ગુજરાતી (Gujarati)</option>
-                        <option value="kn">ಕನ್ನಡ (Kannada)</option>
-                        <option value="ml">മലയാളം (Malayalam)</option>
-                        <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
                     </select>
                 </div>
             </div>
@@ -61,75 +58,37 @@
                     <button class="btn-3d secondary" onclick="location.href='employer-register.html'"><span id="btn-post">Post Job</span></button>
                 </div>
             </div>
-            <div class="hero-visual-container">
-                <div class="orange-flare"></div>
-                <div class="image-box-3d">
-                    <div class="floating-badge-3d"><i class="fa-solid fa-star"></i> 4.9 Verified</div>
-                    <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Worker">
+            
+            <div class="hero-visual-3d">
+                <div class="scene-3d">
+                    <div class="orange-flare-layer"></div> <div class="image-hover-layer"> <div class="floating-pro-badge">4.9 ★ Verified</div>
+                        <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Worker">
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="sponsor-section">
-        <div class="container">
-            <h2 class="section-title-3d" id="trans-sponsor-head">Exclusive Ethical Sponsor</h2>
-            <div class="sponsor-brand-wrap">
-                <div class="sponsor-card-3d">ODDSOCEAN</div>
-            </div>
-        </div>
+    <section class="sponsor-section container">
+        <h2 id="trans-sponsor">Exclusive Ethical Sponsor</h2>
+        <div class="sponsor-card-3d">ODDSOCEAN</div>
     </section>
 
-    <section class="features-grid-section">
-        <div class="container grid-3col">
-            <div class="card-3d feature-card">
-                <i class="fa-solid fa-vault icon-neo"></i>
-                <h3 id="f1-t">SafePay Escrow</h3>
-                <p id="f1-d">Funds are locked in a 3D vault until you approve the work.</p>
-            </div>
-            <div class="card-3d feature-card">
-                <i class="fa-solid fa-users-viewfinder icon-neo"></i>
-                <h3 id="f2-t">Mutual Ratings</h3>
-                <p id="f2-d">Employers and Workers rate each other for total transparency.</p>
-            </div>
-            <div class="card-3d feature-card">
-                <i class="fa-solid fa-microchip icon-neo"></i>
-                <h3 id="f3-t">Skill Verification</h3>
-                <p id="f3-d">Real-time Aadhaar and Skill testing for every professional.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="founder-section" id="owner-info">
-        <div class="container">
-            <div class="owner-card-3d">
-                <span class="tag-3d" id="owner-tag">FOUNDER & CEO</span>
-                <h2>AAYUSH KUMAR</h2>
-                <p id="owner-bio">"At Kaarya, our priority is dignity and safety. We are building a tech-driven future that protects the rights of every worker."</p>
-            </div>
+    <section id="owner-info" class="container founder-pad">
+        <div class="owner-card-3d">
+            <span class="tag-3d" id="owner-tag">FOUNDER & CEO</span>
+            <h2>AAYUSH KUMAR</h2>
+            <p id="owner-bio">"At Kaarya, our priority is dignity and safety. We are building a tech-driven future that protects the rights of every worker."</p>
         </div>
     </section>
 
     <script>
-        function toggleTheme() { document.body.classList.toggle('dark-theme'); }
         function scrollToOwner() { document.getElementById('owner-info').scrollIntoView({ behavior: 'smooth' }); }
 
         const translations = {
-            en: { 
-                policy: "STRICT NO CHILD LABOUR POLICY", report: "REPORT:", badge: "SECURE SAFEPAY ENABLED",
-                title: "Hire Top Talent.<br><span class='ambient-text'>Verified Skills.</span>",
-                worker: "Find Work", post: "Post Job", sponsor: "Exclusive Ethical Sponsor", tag: "FOUNDER & CEO"
-            },
-            hi: { 
-                policy: "सख्त बाल श्रम निषेध नीति", report: "रिपोर्ट:", badge: "सुरक्षित सेफ-पे सक्षम",
-                title: "शीर्ष प्रतिभा नियुक्त करें।<br><span class='ambient-text'>सत्यापित कौशल।</span>",
-                worker: "काम खोजें", post: "जॉब पोस्ट", sponsor: "विशेष नैतिक प्रायोजक", tag: "संस्थापक और सीईओ"
-            },
-            mai: { 
-                policy: "सख्त बाल श्रम निषेध नीति", report: "रिपोर्ट करू:", badge: "सुरक्षित सेफ-पे सक्षम",
-                title: "सबसँ नीक कें काज पर राखू।<br><span class='ambient-text'>सत्यापित कौशल।</span>",
-                worker: "काज खोजू", post: "काज पोस्ट करू", sponsor: "विशेष नैतिक प्रायोजक", tag: "संस्थापक ओ सीईओ"
-            }
+            en: { policy: "STRICT NO CHILD LABOUR POLICY", report: "REPORT:", badge: "SECURE SAFEPAY ENABLED", title: "Hire Top Talent.<br><span class='ambient-text'>Verified Skills.</span>", worker: "Find Work", post: "Post Job", sponsor: "Exclusive Ethical Sponsor", tag: "FOUNDER & CEO" },
+            hi: { policy: "सख्त बाल श्रम निषेध नीति", report: "रिपोर्ट:", badge: "सुरक्षित सेफ-पे सक्षम", title: "शीर्ष प्रतिभा नियुक्त करें।<br><span class='ambient-text'>सत्यापित कौशल।</span>", worker: "काम खोजें", post: "जॉब पोस्ट", sponsor: "विशेष नैतिक प्रायोजक", tag: "संस्थापक और सीईओ" },
+            mai: { policy: "सख्त बाल श्रम निषेध नीति", report: "रिपोर्ट करू:", badge: "सुरक्षित सेफ-पे सक्षम", title: "सबसँ नीक कें काज पर राखू।", worker: "काज खोजू", post: "काज पोस्ट करू", sponsor: "विशेष नैतिक प्रायोजक", tag: "संस्थापक ओ सीईओ" }
         };
 
         function changeLanguage() {
@@ -141,7 +100,7 @@
             document.getElementById("hero-title").innerHTML = t.title;
             document.getElementById("btn-worker").innerText = t.worker;
             document.getElementById("btn-post").innerText = t.post;
-            document.getElementById("trans-sponsor-head").innerText = t.sponsor;
+            document.getElementById("trans-sponsor").innerText = t.sponsor;
             document.getElementById("owner-tag").innerText = t.tag;
         }
     </script>

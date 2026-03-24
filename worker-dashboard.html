@@ -1,20 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="stylesheet" href="style.css"><title>Dashboard | Kaarya</title></head>
-<body class="light-theme">
-    <nav class="navbar-spatial"><div class="container flex-between">
-        <div class="logo-spatial">Kaarya<span>.</span></div>
-        <div style="background:var(--success); color:white; padding:10px 20px; border-radius:50px; font-weight:800;">SafePay: ₹2,450</div>
-    </div></nav>
-    <main class="container" style="margin-top:50px;">
-        <h2>Available Jobs Near You</h2>
-        <div class="card-3d" style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
-            <div>
-                <h3>Residential Plumbing</h3>
-                <p>Location: Ramapuram | Rating: 4.9⭐</p>
-            </div>
-            <button class="btn-3d primary">Apply Now</button>
+<head>
+    <meta charset="UTF-8">
+    <title>Kaarya | Pro Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+
+    <nav class="navbar-spatial">
+        <div class="container flex-between">
+            <div class="logo-spatial">Kaarya<span>.</span></div>
+            <div id="wallet-status" class="btn-cyber secondary">Wallet: ₹0.00</div>
         </div>
+    </nav>
+
+    <main class="container" style="padding-top: 50px;">
+        <h2 class="glow-text">Verified Opportunities</h2>
+        
+        <div id="loader" class="loader-spatial">
+            <i class="fa-solid fa-circle-notch fa-spin"></i> Synchronizing with SafePay...
+        </div>
+
+        <div id="job-grid" class="grid-2col" style="margin-top: 30px; display: none;">
+            </div>
     </main>
+
+    <script>
+        // PROFESSIONAL DATA FETCHING
+        async function loadDashboard() {
+            try {
+                const response = await fetch('/api/jobs');
+                const jobs = await response.json();
+                
+                const grid = document.getElementById('job-grid');
+                const loader = document.getElementById('loader');
+
+                grid.innerHTML = jobs.map(job => `
+                    <div class="card-3d job-card">
+                        <div class="flex-between">
+                            <h3>${job.title}</h3>
+                            <span class="badge-cyber">${job.status}</span>
+                        </div>
+                        <p><i class="fa-solid fa-location-dot"></i> ${job.location}</p>
+                        <div class="flex-between" style="margin-top:20px;">
+                            <strong style="color:var(--primary)">₹${job.pay}/day</strong>
+                            <button class="btn-cyber primary" onclick="applyJob(${job.id}, this)">Apply Now</button>
+                        </div>
+                    </div>
+                `).join('');
+
+                loader.style.display = 'none';
+                grid.style.display = 'grid';
+            } catch (err) {
+                console.error("Dashboard Sync Failed", err);
+            }
+        }
+
+        function applyJob(id, btn) {
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = 'Applied ✓';
+                btn.style.background = '#10B981';
+            }, 1500);
+        }
+
+        window.onload = loadDashboard;
+    </script>
 </body>
 </html>

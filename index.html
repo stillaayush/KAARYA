@@ -3,114 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaarya | Professional 3D Ecosystem</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Kaarya | Professional Labor Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme">
+<body class="light-theme">
 
-    <div class="legal-bar-blood">
+    <div class="legal-bar-pro">
         <div class="container flex-between">
-            <div class="warning-flex">
-                <i class="fa-solid fa-shield-halved"></i>
-                <strong id="trans-policy">STRICT NO CHILD LABOUR POLICY</strong>
-            </div>
+            <p><i class="fa-solid fa-shield-halved"></i> <strong>STRICT NO CHILD LABOUR POLICY</strong> | Verified Ecosystem</p>
             <div class="emergency-links">
-                <a href="tel:1098" class="btn-blood-mini">1098</a>
-                <a href="tel:100" class="btn-blood-mini">100</a>
+                <span>Helplines:</span> <a href="tel:1098">1098</a> | <a href="tel:100">100</a>
             </div>
         </div>
     </div>
 
-    <nav class="navbar-spatial">
+    <nav class="navbar-pro">
         <div class="container flex-between">
-            <div class="logo-spatial" onclick="scrollToOwner()">Kaarya<span>.</span></div>
-            <div class="nav-right">
-                <div class="lang-pill-3d">
-                    <i class="fa-solid fa-globe"></i>
-                    <select id="languageToggle" onchange="changeLanguage()">
-                        <option value="en">English</option>
-                        <option value="hi">हिन्दी</option>
-                        <option value="mai">मैथिली</option>
-                        <option value="bn">বাংলা</option>
-                        <option value="ta">தமிழ்</option>
-                    </select>
+            <div class="nav-left">
+                <div class="logo-pro" onclick="location.reload()">K<span>.</span></div>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search for jobs or talent...">
                 </div>
-                <button class="btn-icon-3d" onclick="toggleTheme()">
-                    <i class="fa-solid fa-circle-half-stroke"></i>
-                </button>
+            </div>
+            <div class="nav-icons">
+                <div class="nav-item active"><i class="fa-solid fa-house"></i><span>Home</span></div>
+                <div class="nav-item" onclick="location.href='worker-register.html'"><i class="fa-solid fa-briefcase"></i><span>Jobs</span></div>
+                <div class="nav-item"><i class="fa-solid fa-message"></i><span>Messaging</span></div>
+                <div class="nav-item"><i class="fa-solid fa-bell"></i><span>Notifications</span></div>
+                <div class="v-line"></div>
+                <button class="btn-post-job" onclick="location.href='employer-register.html'">Post a Job</button>
             </div>
         </div>
     </nav>
 
-    <header class="hero-stage container">
-        <div class="hero-grid">
-            <div class="hero-content">
-                <div class="badge-cyber" id="trans-badge">SECURE SAFEPAY ENABLED</div>
-                <h1 id="hero-title">Hire the Best.<br><span class="ambient-glow-text">Empower the Rest.</span></h1>
-                <p id="hero-sub">The world's first spatial ethical marketplace. Zero commission. Direct UPI. Secured by ODDSOCEAN.</p>
-                <div class="cta-group">
-                    <button class="btn-cyber primary" onclick="window.location.href='worker-register.html'">
-                        <span id="btn-worker">Find Work</span>
-                    </button>
-                    <button class="btn-cyber secondary" onclick="window.location.href='employer-register.html'">
-                        <span id="btn-post">Post Job</span>
-                    </button>
+    <main class="container main-layout">
+        
+        <aside class="sidebar-left">
+            <div class="pro-card user-summary-card">
+                <div class="cover-gradient"></div>
+                <div class="avatar-holder">AK</div>
+                <div class="user-details">
+                    <h3>Aayush Kumar</h3>
+                    <p>Founder & CEO at Kaarya</p>
+                </div>
+                <div class="user-stats">
+                    <div class="stat-row"><span>Profile views</span> <strong>1,204</strong></div>
+                    <div class="stat-row"><span>Syncing Status</span> <strong style="color:var(--primary)">Live</strong></div>
+                </div>
+                <div class="sidebar-footer" onclick="scrollToOwner()">View Full Profile</div>
+            </div>
+
+            <div class="pro-card safety-card">
+                <h4>Labor Safety First</h4>
+                <p>All workers are insured under the Kaarya Safety Protocol. 100% verified identities.</p>
+            </div>
+        </aside>
+
+        <section class="feed-center">
+            <div class="pro-card post-box">
+                <div class="flex-row">
+                    <div class="avatar-small">AK</div>
+                    <button class="post-trigger" onclick="location.href='employer-register.html'">Start a job post...</button>
+                </div>
+                <div class="post-actions">
+                    <span><i class="fa-solid fa-image" style="color:#70b5f9"></i> Photo</span>
+                    <span><i class="fa-solid fa-video" style="color:#7fc15e"></i> Video</span>
+                    <span><i class="fa-solid fa-calendar-days" style="color:#e7a33e"></i> Event</span>
                 </div>
             </div>
-            <div class="hero-visual-3d">
-                <div class="scene-3d">
-                    <div class="cyber-flare"></div>
-                    <div class="main-card-3d">
-                        <div class="floating-tag">4.9 ★</div>
-                        <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Worker">
-                    </div>
+
+            <div class="feed-divider"><hr><span>Sort by: <strong>Verified</strong></span></div>
+
+            <div id="job-feed">
+                <div class="loading-state">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Initializing Feed...
                 </div>
             </div>
-        </div>
-    </header>
+        </section>
 
-    <section class="sponsor-elite container">
-        <p id="trans-partner" class="label-mini">EXCLUSIVE PARTNER</p>
-        <div class="sponsor-glass-plate">
-            <h1 class="logo-oddsocean">ODDSOCEAN</h1>
-        </div>
-    </section>
+        <aside class="sidebar-right">
+            <div class="pro-card sponsor-slot">
+                <span class="ad-label">Ad · <i class="fa-solid fa-ellipsis"></i></span>
+                <p class="sponsor-msg">Exclusive Ethical Partner</p>
+                <div class="sponsor-glass-3d">
+                    <h1 class="logo-oddsocean">ODDSOCEAN</h1>
+                </div>
+                <button class="btn-follow-pro">Follow Partnership</button>
+            </div>
 
-    <section id="owner-info" class="container founder-section">
-        <div class="founder-depth-box">
-            <div class="hologram-label">FOUNDER</div>
-            <div class="founder-card-inner">
-                <span id="owner-tag">FOUNDER & CEO</span>
-                <h2 class="founder-name">AAYUSH KUMAR</h2>
-                <p id="owner-bio">"At Kaarya, we ensure every worker is paid with dignity and every employer finds excellence."</p>
+            <div id="owner-info" class="pro-card founder-bio-card">
+                <h4>About the Founder</h4>
+                <p>"Building technology that respects human dignity and ensures every worker is paid with pride."</p>
                 <div class="glow-signature"></div>
             </div>
-        </div>
-    </section>
+        </aside>
+    </main>
 
-    <script>
-        function toggleTheme() { document.body.classList.toggle('light-theme'); }
-        function scrollToOwner() { document.getElementById('owner-info').scrollIntoView({ behavior: 'smooth' }); }
-        
-        const translations = {
-            en: { policy: "STRICT NO CHILD LABOUR POLICY", badge: "SECURE SAFEPAY ENABLED", title: "Hire the Best.<br><span class='ambient-glow-text'>Empower the Rest.</span>", worker: "Find Work", post: "Post Job", partner: "EXCLUSIVE PARTNER", tag: "FOUNDER & CEO" },
-            hi: { policy: "सख्त बाल श्रम निषेध नीति", badge: "सुरक्षित सेफ-पे सक्षम", title: "सर्वश्रेष्ठ को नियुक्त करें।", worker: "काम खोजें", post: "जॉब पोस्ट", partner: "विशेष भागीदार", tag: "संस्थापक और सीईओ" },
-            mai: { policy: "सख्त बाल श्रम निषेध नीति", badge: "सुरक्षित सेफ-पे सक्षम", title: "सबसँ नीक कें राखू।", worker: "काज खोजू", post: "काज पोस्ट करू", partner: "विशेष भागीदार", tag: "संस्थापक ओ सीईओ" }
-        };
-
-        function changeLanguage() {
-            const lang = document.getElementById("languageToggle").value;
-            const t = translations[lang] || translations.en;
-            document.getElementById("trans-policy").innerText = t.policy;
-            document.getElementById("trans-badge").innerText = t.badge;
-            document.getElementById("hero-title").innerHTML = t.title;
-            document.getElementById("btn-worker").innerText = t.worker;
-            document.getElementById("btn-post").innerText = t.post;
-            document.getElementById("trans-partner").innerText = t.partner;
-            document.getElementById("owner-tag").innerText = t.tag;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
